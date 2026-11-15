@@ -1,0 +1,94 @@
+{
+  "suite": "Brazil AI & x402 Enterprise Suite",
+  "version": "2.2.0",
+  "network": "base",
+  "currency": "USDC",
+  "paymentProtocol": "x402-v2",
+  "totalServices": 7,
+  "services": [
+    {
+      "id": "br-nfe-xml-auditor-x402",
+      "category": "brazil-fiscal",
+      "name": "Brazil NF-e XML Auditor & Key Engine",
+      "priceUsdc": "0.01",
+      "method": "POST",
+      "endpoint": "https://br-nfe-xml-auditor-x402.architect-x402.workers.dev/audit",
+      "mcpEndpoint": "https://br-nfe-xml-auditor-x402.architect-x402.workers.dev/mcp",
+      "catalogUrl": "https://br-nfe-xml-auditor-x402.architect-x402.workers.dev/.well-known/x402",
+      "llmsUrl": "https://br-nfe-xml-auditor-x402.architect-x402.workers.dev/llms.txt",
+      "summary": "Compresses SEFAZ 4.00 NF-e/NFC-e XML (~90% token savings), reconciles vProd/vNF math, validates CFOP/NCM/cStat=100, and decodes 44-digit Mod-11 access keys."
+    },
+    {
+      "id": "br-docs-parser-x402",
+      "category": "brazil-payments-docs",
+      "name": "Brazil Boleto, Tax Slip & NF-e Key Parser",
+      "priceUsdc": "0.008",
+      "method": "POST",
+      "endpoint": "https://br-docs-parser-x402.architect-x402.workers.dev/parse",
+      "mcpEndpoint": "https://br-docs-parser-x402.architect-x402.workers.dev/mcp",
+      "catalogUrl": "https://br-docs-parser-x402.architect-x402.workers.dev/.well-known/x402",
+      "llmsUrl": "https://br-docs-parser-x402.architect-x402.workers.dev/llms.txt",
+      "summary": "Validates and decodes FEBRABAN bank boletos (47/44 digits) with post-Feb/2025 due date reset, DARF/FGTS/IPTU tax slips (48/44 digits), and 44-digit NF-e keys."
+    },
+    {
+      "id": "br-tax-payroll-calc-x402",
+      "category": "brazil-tax-payroll",
+      "name": "Brazil Tax & Payroll Engine",
+      "priceUsdc": "0.008",
+      "method": "POST",
+      "endpoint": "https://br-tax-payroll-calc-x402.architect-x402.workers.dev/calc",
+      "mcpEndpoint": "https://br-tax-payroll-calc-x402.architect-x402.workers.dev/mcp",
+      "catalogUrl": "https://br-tax-payroll-calc-x402.architect-x402.workers.dev/.well-known/x402",
+      "llmsUrl": "https://br-tax-payroll-calc-x402.architect-x402.workers.dev/llms.txt",
+      "summary": "Calculates Simples Nacional (Anexos I-V + 28% Fator R optimization), progressive INSS/IRRF (Legal vs Simplified) + FGTS, and B2B NFS-e withholdings."
+    },
+    {
+      "id": "br-business-intel-x402",
+      "category": "brazil-kyb-pix",
+      "name": "Brazil Business Intel & PIX Engine",
+      "priceUsdc": "0.01",
+      "method": "POST",
+      "endpoint": "https://br-business-intel-x402.architect-x402.workers.dev/intel",
+      "mcpEndpoint": "https://br-business-intel-x402.architect-x402.workers.dev/mcp",
+      "catalogUrl": "https://br-business-intel-x402.architect-x402.workers.dev/.well-known/x402",
+      "llmsUrl": "https://br-business-intel-x402.architect-x402.workers.dev/llms.txt",
+      "summary": "Corporate CNPJ KYB dossier (QSA, Simples/MEI, B2B risk score), IBGE Geo-CEP lookup, CPF/CNPJ Mod-11 validator, and Central Bank PIX EMVCo CRC16 generator/decoder."
+    },
+    {
+      "id": "br-fin-calculators-x402",
+      "category": "brazil-bcb-finance",
+      "name": "Brazil Central Bank & Financial Calculators",
+      "priceUsdc": "0.005",
+      "method": "POST",
+      "endpoint": "https://br-fin-calculators-x402.architect-x402.workers.dev/fin",
+      "mcpEndpoint": "https://br-fin-calculators-x402.architect-x402.workers.dev/mcp",
+      "catalogUrl": "https://br-fin-calculators-x402.architect-x402.workers.dev/.well-known/x402",
+      "llmsUrl": "https://br-fin-calculators-x402.architect-x402.workers.dev/llms.txt",
+      "summary": "Official BCB SGS monetary correction (IPCA, IGPM, INPC, SELIC, CDI), official BCB PTAX FX (BRL/USD/EUR/GBP), and Price/SAC loan simulator."
+    },
+    {
+      "id": "web-enrichment-x402",
+      "category": "global-web-rag",
+      "name": "Web Content Enrichment & Table Extractor",
+      "priceUsdc": "0.002",
+      "method": "GET",
+      "endpoint": "https://web-enrichment-x402.architect-x402.workers.dev/clean?url={target}&format=json",
+      "mcpEndpoint": "https://web-enrichment-x402.architect-x402.workers.dev/mcp",
+      "catalogUrl": "https://web-enrichment-x402.architect-x402.workers.dev/.well-known/x402",
+      "llmsUrl": "https://web-enrichment-x402.architect-x402.workers.dev/llms.txt",
+      "summary": "Converts noisy HTML pages into clean Markdown, structured JSON tables, and JSON-LD metadata with token-savings telemetry."
+    },
+    {
+      "id": "agent-guard-x402",
+      "category": "global-ai-security",
+      "name": "Agent Guard Prompt Injection & PII Firewall",
+      "priceUsdc": "0.02",
+      "method": "POST",
+      "endpoint": "https://agent-guard-x402.architect-x402.workers.dev/guard",
+      "mcpEndpoint": "https://agent-guard-x402.architect-x402.workers.dev/mcp",
+      "catalogUrl": "https://agent-guard-x402.architect-x402.workers.dev/.well-known/x402",
+      "llmsUrl": "https://agent-guard-x402.architect-x402.workers.dev/llms.txt",
+      "summary": "Hybrid prompt-injection firewall (Llama Guard 3 8B + heuristics + Base64 decode) and Brazilian PII/secret masking (CPF, CNPJ, API keys)."
+    }
+  ]
+}

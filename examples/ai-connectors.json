@@ -1,0 +1,25 @@
+{
+  "mcpServers": {
+    "br-nfe-xml-auditor": {
+      "url": "https://br-nfe-xml-auditor-x402.architect-x402.workers.dev/mcp"
+    },
+    "br-docs-parser": {
+      "url": "https://br-docs-parser-x402.architect-x402.workers.dev/mcp"
+    },
+    "br-tax-payroll-calc": {
+      "url": "https://br-tax-payroll-calc-x402.architect-x402.workers.dev/mcp"
+    },
+    "br-business-intel": {
+      "url": "https://br-business-intel-x402.architect-x402.workers.dev/mcp"
+    },
+    "br-fin-calculators": {
+      "url": "https://br-fin-calculators-x402.architect-x402.workers.dev/mcp"
+    },
+    "web-enrichment": {
+      "url": "https://web-enrichment-x402.architect-x402.workers.dev/mcp"
+    },
+    "agent-guard": {
+      "url": "https://agent-guard-x402.architect-x402.workers.dev/mcp"
+    }
+  }
+}
