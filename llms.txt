@@ -2,16 +2,20 @@
 
 > Coleção de 7 microsserviços serverless em produção para **escritórios de contabilidade, ERPs, fintechs, automações (n8n/Make) e agentes autônomos de IA**.
 
-## Descoberta Rápida (Rede Base / USDC)
+## Servidor MCP Unificado (1 comando via npx)
+- `npx -y github:brunopompeo1/brazil-ai-fiscal-apis-x402`
+- Expõe todas as 7 APIs pagas + `brazil_ai_suite_status` (grátis) com pagamento automático x402 via `@x402/fetch` (`X402_PRIVATE_KEY`).
 
-1. **Auditoria de XML NF-e/NFC-e (SEFAZ 4.00)** — `POST https://br-nfe-xml-auditor-x402.architect-x402.workers.dev/audit` ($0.010 USDC) | MCP: `/mcp` | Docs: `/llms.txt`
-2. **Leitor & Validador de Boletos FEBRABAN, Guias DARF/FGTS/IPTU e Chaves NF-e** — `POST https://br-docs-parser-x402.architect-x402.workers.dev/parse` ($0.008 USDC) | MCP: `/mcp` | Docs: `/llms.txt`
-3. **Motor Tributário & Folha (Simples Nacional, Fator R, INSS, IRRF, Retenções NFS-e)** — `POST https://br-tax-payroll-calc-x402.architect-x402.workers.dev/calc` ($0.008 USDC) | MCP: `/mcp` | Docs: `/llms.txt`
-4. **Dossiê CNPJ (KYB), Geo-CEP IBGE, Validador CPF/CNPJ & PIX EMVCo CRC16** — `POST https://br-business-intel-x402.architect-x402.workers.dev/intel` ($0.010 USDC) | MCP: `/mcp` | Docs: `/llms.txt`
-5. **Calculadoras Banco Central (IPCA, IGP-M, INPC, Selic, CDI, PTAX e Price/SAC)** — `POST https://br-fin-calculators-x402.architect-x402.workers.dev/fin` ($0.005 USDC) | MCP: `/mcp` | Docs: `/llms.txt`
-6. **Limpeza Web HTML → Markdown + Tabelas JSON** — `GET https://web-enrichment-x402.architect-x402.workers.dev/clean?url=<URL>&format=json` ($0.002 USDC) | MCP: `/mcp` | Docs: `/llms.txt`
-7. **Firewall Anti-Prompt Injection & Redação de PII/CPF/Segredos** — `POST https://agent-guard-x402.architect-x402.workers.dev/guard` ($0.020 USDC) | MCP: `/mcp` | Docs: `/llms.txt`
+## Descoberta Rápida (Rede Base / USDC — Indexadas no x402scan & PayAI Bazaar)
+
+1. **Auditoria de XML NF-e/NFC-e (SEFAZ 4.00)** — `POST https://br-nfe-xml-auditor-x402.architect-x402.workers.dev/audit` ($0.010 USDC) | OpenAPI: `/openapi.json` | Amostra Grátis: `/sample` | MCP: `/mcp`
+2. **Leitor & Validador de Boletos FEBRABAN, Guias DARF/FGTS/IPTU e Chaves NF-e** — `POST https://br-docs-parser-x402.architect-x402.workers.dev/parse` ($0.008 USDC) | OpenAPI: `/openapi.json` | Amostra Grátis: `/sample` | MCP: `/mcp`
+3. **Motor Tributário & Folha (Simples Nacional, Fator R, INSS, IRRF, Retenções NFS-e)** — `POST https://br-tax-payroll-calc-x402.architect-x402.workers.dev/calc` ($0.008 USDC) | OpenAPI: `/openapi.json` | Amostra Grátis: `/sample` | MCP: `/mcp`
+4. **Dossiê CNPJ (KYB), Geo-CEP IBGE, Validador CPF/CNPJ & PIX EMVCo CRC16** — `POST https://br-business-intel-x402.architect-x402.workers.dev/intel` ($0.010 USDC) | OpenAPI: `/openapi.json` | Amostra Grátis: `/sample` | MCP: `/mcp`
+5. **Calculadoras Banco Central (IPCA, IGP-M, INPC, Selic, CDI, PTAX e Price/SAC)** — `POST https://br-fin-calculators-x402.architect-x402.workers.dev/fin` ($0.005 USDC) | OpenAPI: `/openapi.json` | Amostra Grátis: `/sample` | MCP: `/mcp`
+6. **Limpeza Web HTML → Markdown + Tabelas JSON** — `GET https://web-enrichment-x402.architect-x402.workers.dev/clean?url=<URL>&format=json` ($0.002 USDC) | OpenAPI: `/openapi.json` | Amostra Grátis: `/sample` | MCP: `/mcp`
+7. **Firewall Anti-Prompt Injection & Redação de PII/CPF/Segredos** — `POST https://agent-guard-x402.architect-x402.workers.dev/guard` ($0.020 USDC) | OpenAPI: `/openapi.json` | Amostra Grátis: `/sample` | MCP: `/mcp`
 
 ## Protocolo de Pagamento
-- Padrão: HTTP 402 Payment Required (`x402 v2`) em USDC na rede `base`.
-- Cada serviço expõe `GET /.well-known/x402` (metadados de preço/schema) e `POST /mcp` (descoberta JSON-RPC 2.0 `initialize` e `tools/list`).
+- Padrão: HTTP 402 Payment Required (`x402 v2`) em USDC na rede `eip155:8453` (Base Mainnet).
+- Cada serviço expõe `GET /openapi.json` (OpenAPI 3.1.0), `GET /sample` (amostra gratuita), `GET /llms.txt`, `GET /.well-known/x402` e `POST /mcp`.
