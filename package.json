@@ -1,50 +1,48 @@
 {
-  "name": "brazil-ai-x402-mcp",
-  "version": "1.0.0",
-  "description": "Unified MCP Server for Brazil AI & x402 Suite (NF-e XML Auditor, Boleto/DARF Parser, Simples Nacional/Fator R, CNPJ/PIX, BCB IPCA/PTAX, Web Scraper, Prompt Injection Guard) with native x402 v2 Base USDC micropayments.",
-  "type": "module",
-  "main": "src/index.mjs",
-  "bin": {
-    "brazil-ai-x402-mcp": "./bin/cli.mjs"
-  },
-  "files": [
-    "bin/",
-    "src/",
-    "README.md",
-    "README.en.md",
-    "catalog.json",
-    "llms.txt"
-  ],
-  "scripts": {
-    "start": "node ./bin/cli.mjs"
-  },
-  "keywords": [
-    "mcp",
-    "model-context-protocol",
-    "x402",
-    "brazil",
-    "nfe",
-    "boleto",
-    "simples-nacional",
-    "cnpj",
-    "pix",
-    "usdc",
-    "base",
-    "cloudflare-workers"
-  ],
-  "author": "Bruno Pompeo (Architect x402)",
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/brunopompeo1/brazil-ai-fiscal-apis-x402.git"
-  },
-  "engines": {
-    "node": ">=18.0.0"
-  },
-  "dependencies": {
-    "@modelcontextprotocol/sdk": "^1.32.2",
-    "@x402/evm": "^2.31.0",
-    "@x402/fetch": "^2.31.0",
-    "viem": "^2.23.0"
-  }
+    "name": "brazil-ai-x402-mcp",
+    "version": "1.0.0",
+    "description": "Unified MCP Server for Brazil AI & x402 Suite (NF-e XML Auditor, Boleto/DARF Parser, Simples Nacional/Fator R, CNPJ/PIX, BCB IPCA/PTAX, Web Scraper, Prompt Injection Guard) with native x402 v2 Base USDC micropayments.",
+    "type": "module",
+    "main": "src/index.mjs",
+    "bin": {
+          "brazil-ai-x402-mcp": "bin/cli.mjs"
+    },
+    "files": [
+          "bin/",
+          "src/",
+          "README.md"
+    ],
+    "scripts": {
+          "start": "node ./bin/cli.mjs",
+          "test": "node ./test/smoke.mjs"
+    },
+    "keywords": [
+          "mcp",
+          "model-context-protocol",
+          "x402",
+          "brazil",
+          "nfe",
+          "boleto",
+          "simples-nacional",
+          "cnpj",
+          "pix",
+          "usdc",
+          "base",
+          "cloudflare-workers"
+    ],
+    "author": "Bruno Pompeo (Architect x402)",
+    "license": "MIT",
+    "repository": {
+          "type": "git",
+          "url": "git+https://github.com/brunopompeo1/brazil-ai-fiscal-apis-x402.git"
+    },
+    "engines": {
+          "node": ">=18.0.0"
+    },
+    "dependencies": {
+          "@modelcontextprotocol/sdk": "^1.32.2",
+          "@x402/evm": "^2.31.0",
+          "@x402/fetch": "^2.31.0",
+          "viem": "^2.23.0"
+    }
 }
