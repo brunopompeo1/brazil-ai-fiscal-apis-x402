@@ -260,11 +260,11 @@ export const SUITE_TOOLS = [
   },
   {
     name: "agent_guard_sanitize",
-    priceUsd: "0.020",
+    priceUsd: "0.008",
     method: "POST",
     endpoint: "https://agent-guard-x402.architect-x402.workers.dev/guard",
     description:
-      "Hybrid Edge AI firewall (@cf/meta/llama-guard-3-8b + multi-language regex + Base64 decoder) that detects prompt injection and masks corporate PII/secrets ($0.020 USDC via x402 on Base).",
+      "Hybrid Edge AI firewall (@cf/meta/llama-guard-3-8b + multi-language regex + Base64 decoder) that detects prompt injection and masks corporate PII/secrets ($0.008 USDC via x402 on Base).",
     inputSchema: {
       type: "object",
       properties: {
