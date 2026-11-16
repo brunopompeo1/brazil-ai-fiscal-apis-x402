@@ -14,7 +14,7 @@
 4. **Dossiê CNPJ (KYB), Geo-CEP IBGE, Validador CPF/CNPJ & PIX EMVCo CRC16** — `POST https://br-business-intel-x402.architect-x402.workers.dev/intel` ($0.010 USDC) | OpenAPI: `/openapi.json` | Amostra Grátis: `/sample` | MCP: `/mcp`
 5. **Calculadoras Banco Central (IPCA, IGP-M, INPC, Selic, CDI, PTAX e Price/SAC)** — `POST https://br-fin-calculators-x402.architect-x402.workers.dev/fin` ($0.005 USDC) | OpenAPI: `/openapi.json` | Amostra Grátis: `/sample` | MCP: `/mcp`
 6. **Limpeza Web HTML → Markdown + Tabelas JSON** — `GET https://web-enrichment-x402.architect-x402.workers.dev/clean?url=<URL>&format=json` ($0.002 USDC) | OpenAPI: `/openapi.json` | Amostra Grátis: `/sample` | MCP: `/mcp`
-7. **Firewall Anti-Prompt Injection & Redação de PII/CPF/Segredos** — `POST https://agent-guard-x402.architect-x402.workers.dev/guard` ($0.020 USDC) | OpenAPI: `/openapi.json` | Amostra Grátis: `/sample` | MCP: `/mcp`
+7. **Firewall Anti-Prompt Injection & Redação de PII/CPF/Segredos** — `POST https://agent-guard-x402.architect-x402.workers.dev/guard` ($0.008 USDC) | OpenAPI: `/openapi.json` | Amostra Grátis: `/sample` | MCP: `/mcp`
 
 ## Protocolo de Pagamento
 - Padrão: HTTP 402 Payment Required (`x402 v2`) em USDC na rede `eip155:8453` (Base Mainnet).

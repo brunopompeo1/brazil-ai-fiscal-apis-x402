@@ -104,7 +104,7 @@
       "id": "agent-guard-x402",
       "category": "global-ai-security",
       "name": "Agent Guard Prompt Injection & PII Firewall",
-      "priceUsdc": "0.02",
+      "priceUsdc": "0.008",
       "method": "POST",
       "endpoint": "https://agent-guard-x402.architect-x402.workers.dev/guard",
       "openApiUrl": "https://agent-guard-x402.architect-x402.workers.dev/openapi.json",

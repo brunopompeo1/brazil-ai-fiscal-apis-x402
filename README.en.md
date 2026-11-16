@@ -20,7 +20,7 @@ A production suite of **7 serverless edge APIs** built for **autonomous AI agent
 | **Brazil Business Intel & PIX** | Corporate CNPJ KYB dossier (QSA, Simples/MEI, risk score), IBGE Geo-CEP, CPF/CNPJ Mod-11 validator, PIX EMVCo CRC16 generator/decoder | `POST https://br-business-intel-x402.architect-x402.workers.dev/intel` | `$0.010` | [`/sample`](https://br-business-intel-x402.architect-x402.workers.dev/sample) |
 | **Brazil BCB Financial Calculators** | Official Central Bank SGS monetary correction (IPCA, IGPM, INPC, SELIC, CDI), official PTAX FX (BRL/USD/EUR/GBP), Price/SAC amortization | `POST https://br-fin-calculators-x402.architect-x402.workers.dev/fin` | `$0.005` | [`/sample`](https://br-fin-calculators-x402.architect-x402.workers.dev/sample) |
 | **Web Content Enrichment** | HTML-to-Markdown + structured JSON tables + JSON-LD extraction with token-savings metrics | `GET https://web-enrichment-x402.architect-x402.workers.dev/clean?url=<URL>&format=json` | `$0.002` | [`/sample`](https://web-enrichment-x402.architect-x402.workers.dev/sample) |
-| **Agent Guard Firewall** | Hybrid prompt-injection detection (Llama Guard 3 8B + heuristics + Base64 decode) + Brazilian PII/secret masking | `POST https://agent-guard-x402.architect-x402.workers.dev/guard` | `$0.020` | [`/sample`](https://agent-guard-x402.architect-x402.workers.dev/sample) |
+| **Agent Guard Firewall** | Hybrid prompt-injection detection (Llama Guard 3 8B + heuristics + Base64 decode) + Brazilian PII/secret masking | `POST https://agent-guard-x402.architect-x402.workers.dev/guard` | `$0.008` | [`/sample`](https://agent-guard-x402.architect-x402.workers.dev/sample) |
 
 ---
 

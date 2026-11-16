@@ -20,7 +20,7 @@ Conjunto de **7 APIs serverless em produção** na Cloudflare Edge projetadas pa
 | **4. Business Intel CNPJ & PIX** | Dossiê completo de CNPJ (QSA, Simples/MEI, score de risco B2B), Geo-CEP IBGE, validador CPF/CNPJ e gerador/leitor de PIX EMVCo CRC16 | `POST https://br-business-intel-x402.architect-x402.workers.dev/intel` | `$0.010` | [`/sample`](https://br-business-intel-x402.architect-x402.workers.dev/sample) |
 | **5. Calculadoras Banco Central** | Correção monetária oficial (IPCA, IGP-M, INPC, Selic, CDI via API SGS), câmbio PTAX oficial (BRL/USD/EUR/GBP) e simulador Price/SAC | `POST https://br-fin-calculators-x402.architect-x402.workers.dev/fin` | `$0.005` | [`/sample`](https://br-fin-calculators-x402.architect-x402.workers.dev/sample) |
 | **6. Limpeza Web para IA** | Converte qualquer página HTML pesada em Markdown limpo, tabelas JSON e JSON-LD com métrica de economia de tokens | `GET https://web-enrichment-x402.architect-x402.workers.dev/clean?url=https://example.com&format=json` | `$0.002` | [`/sample`](https://web-enrichment-x402.architect-x402.workers.dev/sample) |
-| **7. Firewall Anti-Prompt Injection** | Detecta injeção de prompt (Llama Guard 3 + heurística + Base64) e mascara dados sensíveis (CPF, CNPJ, chaves) antes de enviar ao modelo | `POST https://agent-guard-x402.architect-x402.workers.dev/guard` | `$0.020` | [`/sample`](https://agent-guard-x402.architect-x402.workers.dev/sample) |
+| **7. Firewall Anti-Prompt Injection** | Detecta injeção de prompt (Llama Guard 3 + heurística + Base64) e mascara dados sensíveis (CPF, CNPJ, chaves) antes de enviar ao modelo | `POST https://agent-guard-x402.architect-x402.workers.dev/guard` | `$0.008` | [`/sample`](https://agent-guard-x402.architect-x402.workers.dev/sample) |
 
 ---
 
