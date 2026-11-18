@@ -1,5 +1,9 @@
 # Brazil AI & x402 Enterprise Suite — Fiscal, Accounting, Finance & Security APIs
 
+**Discovery does not execute a paid tool.** Without credentials, the unified connector runs in `discovery_only`. Configure `X402_PRIVATE_KEY` locally with a Base wallet funded with USDC, or a valid `BRAZIL_AI_API_KEY`. An empty key enables discovery; never put placeholder text in the private-key field.
+
+After installing repository dependencies, run `node examples/execute.mjs` for a free static sample. With credentials configured, `node examples/execute.mjs --execute` executes live web enrichment for 0.002 USDC or one B2B quota request. It uses the connector's payment client and exits unsuccessfully on tool errors. Remote `/mcp` URLs require a payment-capable client or an `X-API-Key` header. The TypeScript/Python inspection examples do not settle payments.
+
 > [Documentação em Português (README.md)](./README.md) | [JSON Catalog](./catalog.json) | [llms.txt](./llms.txt)
 
 A production suite of **7 serverless edge APIs** built for **autonomous AI agents, fintechs, accounting automation, ERPs, and LatAm/Brazil B2B workflows**.
@@ -34,7 +38,7 @@ A production suite of **7 serverless edge APIs** built for **autonomous AI agent
       "command": "npx",
       "args": ["-y", "github:brunopompeo1/brazil-ai-fiscal-apis-x402"],
       "env": {
-        "X402_PRIVATE_KEY": "0xYOUR_BASE_WALLET_PRIVATE_KEY_OPTIONAL",
+        "X402_PRIVATE_KEY": "",
         "X402_MAX_USDC_PER_CALL": "0.05"
       }
     }

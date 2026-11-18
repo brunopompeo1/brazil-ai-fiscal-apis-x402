@@ -1,0 +1,16 @@
+import assert from 'node:assert/strict';
+import { Client } from '@modelcontextprotocol/sdk/client/index.js';
+import { StdioClientTransport } from '@modelcontextprotocol/sdk/client/stdio.js';
+import { fileURLToPath } from 'node:url';
+
+const env = { ...process.env };
+for (const key of ['X402_PRIVATE_KEY', 'EVM_PRIVATE_KEY', 'BRAZIL_AI_API_KEY']) delete env[key];
+const client = new Client({ name: 'smoke', version: '1.0.0' });
+try {
+  await client.connect(new StdioClientTransport({ command: process.execPath, args: [fileURLToPath(new URL('../bin/cli.mjs', import.meta.url))], env }));
+  const tools = await client.listTools();
+  assert.equal(tools.tools.length, 8);
+  const result = await client.callTool({ name: 'brazil_ai_suite_status', arguments: {} });
+  assert.equal(JSON.parse(result.content[0].text).paymentMode, 'discovery_only');
+  console.log('OK: initialization, eight tools, and explicit discovery-only status without credentials.');
+} finally { await client.close(); }

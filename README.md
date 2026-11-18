@@ -26,6 +26,12 @@ Conjunto de **7 APIs serverless em produção** na Cloudflare Edge projetadas pa
 
 ## Como usar agora mesmo
 
+**Descobrir não executa uma ferramenta paga.** Sem credenciais, o conector inicia em `discovery_only`: lista ferramentas, mas chamadas reais retornam cobrança. Configure localmente `X402_PRIVATE_KEY` com uma carteira com USDC na Base, ou `BRAZIL_AI_API_KEY` com uma chave B2B válida. Não compartilhe credenciais em mensagens.
+
+Após instalar as dependências do repositório, teste a amostra gratuita com `node examples/execute.mjs`. Para executar uma chamada real de limpeza web, use `node examples/execute.mjs --execute`: custa 0,002 USDC com carteira, ou consome uma chamada da cota B2B. O exemplo usa o mesmo cliente de pagamento do conector e devolve erro se a execução falhar.
+
+Os endereços remotos `/mcp` também exigem um cliente que trate a cobrança x402 ou envie `X-API-Key`; adicionar apenas a URL não configura pagamento automático. Os exemplos `quickstart.ts` e `quickstart.py` inspecionam a cobrança, sem liquidar pagamentos.
+
 ### 1. Servidor MCP Unificado (Claude Desktop, Cursor, VS Code, Windsurf)
 Cole no seu `claude_desktop_config.json` ou `.cursor/mcp.json` (ver [`examples/ai-connectors.json`](./examples/ai-connectors.json)):
 
@@ -36,7 +42,7 @@ Cole no seu `claude_desktop_config.json` ou `.cursor/mcp.json` (ver [`examples/a
       "command": "npx",
       "args": ["-y", "github:brunopompeo1/brazil-ai-fiscal-apis-x402"],
       "env": {
-        "X402_PRIVATE_KEY": "0xSUA_CHAVE_PRIVADA_BASE_OPCIONAL",
+        "X402_PRIVATE_KEY": "",
         "X402_MAX_USDC_PER_CALL": "0.05"
       }
     }
