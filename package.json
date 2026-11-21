@@ -1,7 +1,7 @@
 {
     "name": "brazil-ai-x402-mcp",
-    "version": "1.0.0",
-    "description": "Unified MCP Server for Brazil AI & x402 Suite (NF-e XML Auditor, Boleto/DARF Parser, Simples Nacional/Fator R, CNPJ/PIX, BCB IPCA/PTAX, Web Scraper, Prompt Injection Guard) with native x402 v2 Base USDC micropayments.",
+    "version": "2.4.0",
+    "description": "Unified MCP Server for Brazil AI & x402 Suite (9 Edge APIs: NF-e XML Auditor, DANFSe RTC CBS/IBS, Boleto/DARF Parser, Simples Nacional/Fator R, CNPJ/PIX, BCB IPCA/PTAX, Web Scraper, Transactional Email, Prompt Injection Guard) with native Coinbase CDP x402 v2 Base USDC micropayments.",
     "type": "module",
     "main": "src/index.mjs",
     "bin": {
@@ -20,12 +20,18 @@
           "mcp",
           "model-context-protocol",
           "x402",
+          "coinbase-cdp",
+          "agentic-market",
           "brazil",
           "nfe",
+          "danfse",
+          "reforma-tributaria",
+          "cbs-ibs",
           "boleto",
           "simples-nacional",
           "cnpj",
           "pix",
+          "transactional-email",
           "usdc",
           "base",
           "cloudflare-workers"

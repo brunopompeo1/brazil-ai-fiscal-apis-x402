@@ -33,6 +33,43 @@ export const SUITE_TOOLS = [
     },
   },
   {
+    name: "br_danfse_rtc_generate",
+    priceUsd: "0.005",
+    method: "POST",
+    endpoint: "https://br-danfse-rtc-x402.architect-x402.workers.dev/generate",
+    description:
+      "Official Brazilian NFS-e Nacional DANFSe generator and Tax Reform (LC 214/2025) CBS/IBS/ISS calculator ($0.005 USDC via x402 on Base).",
+    inputSchema: {
+      type: "object",
+      properties: {
+        xml: {
+          type: "string",
+          description: "Raw NFS-e XML (National standard or ABRASF).",
+        },
+        valorServico: {
+          type: "number",
+          description: "Shortcut service amount in BRL.",
+        },
+        discriminacao: {
+          type: "string",
+          description: "Shortcut service description.",
+        },
+        prestador: {
+          type: "object",
+          description: "Service provider identification (CNPJ, razão social, município).",
+        },
+        tomador: {
+          type: "object",
+          description: "Service taker identification (CPF/CNPJ, nome/razão social).",
+        },
+        servico: {
+          type: "object",
+          description: "Service values and ISS/CBS/IBS rates.",
+        },
+      },
+    },
+  },
+  {
     name: "br_docs_parser",
     priceUsd: "0.008",
     method: "POST",
@@ -256,6 +293,44 @@ export const SUITE_TOOLS = [
         },
       },
       required: ["url"],
+    },
+  },
+  {
+    name: "agent_send_email",
+    priceUsd: "0.005",
+    method: "POST",
+    endpoint: "https://agent-email-x402.architect-x402.workers.dev/send",
+    description:
+      "Dispatches transactional or alert emails on behalf of an autonomous AI agent with automatic Markdown-to-responsive-HTML compilation and zero SaaS subscription ($0.005 USDC via x402 on Base).",
+    inputSchema: {
+      type: "object",
+      properties: {
+        to: {
+          type: "string",
+          description: "Recipient email address (or comma-separated list of recipients)",
+        },
+        subject: {
+          type: "string",
+          description: "Email subject line",
+        },
+        markdown: {
+          type: "string",
+          description: "Markdown email content (automatically compiled into responsive HTML email)",
+        },
+        text: {
+          type: "string",
+          description: "Optional plain text body fallback",
+        },
+        html: {
+          type: "string",
+          description: "Optional raw HTML body override",
+        },
+        replyTo: {
+          type: "string",
+          description: "Optional Reply-To email address",
+        },
+      },
+      required: ["to", "subject"],
     },
   },
   {

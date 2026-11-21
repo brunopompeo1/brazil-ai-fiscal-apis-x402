@@ -1,20 +1,27 @@
 {
   "suite": "Brazil AI & x402 Enterprise Suite",
-  "version": "2.3.0",
+  "version": "2.4.0",
   "network": "base",
   "chainId": "eip155:8453",
   "currency": "USDC",
   "paymentProtocol": "x402-v2",
+  "facilitators": {
+    "primary": "Coinbase CDP Facilitator (api.cdp.coinbase.com/platform/v2/x402)",
+    "fallback": "PayAI Facilitator (facilitator.payai.network)"
+  },
   "directories": {
+    "agenticMarket": "https://agentic.market",
     "x402scan": "https://www.x402scan.com",
-    "payaiBazaar": "https://facilitator.payai.network"
+    "payaiBazaar": "https://facilitator.payai.network",
+    "glama": "https://glama.ai/mcp/connectors",
+    "officialMcpRegistry": "https://registry.modelcontextprotocol.io"
   },
   "unifiedMcp": {
     "package": "brazil-ai-x402-mcp",
     "npxGithub": "npx -y github:brunopompeo1/brazil-ai-fiscal-apis-x402",
-    "toolsCount": 8
+    "toolsCount": 10
   },
-  "totalServices": 7,
+  "totalServices": 9,
   "services": [
     {
       "id": "br-nfe-xml-auditor-x402",
@@ -29,6 +36,20 @@
       "catalogUrl": "https://br-nfe-xml-auditor-x402.architect-x402.workers.dev/.well-known/x402",
       "llmsUrl": "https://br-nfe-xml-auditor-x402.architect-x402.workers.dev/llms.txt",
       "summary": "Compresses SEFAZ 4.00 NF-e/NFC-e XML (~90% token savings), reconciles vProd/vNF math, validates CFOP/NCM/cStat=100, and decodes 44-digit Mod-11 access keys."
+    },
+    {
+      "id": "br-danfse-rtc-x402",
+      "category": "brazil-tax-reform",
+      "name": "Brazil DANFSe Nacional & Tax Reform (RTC CBS/IBS) Engine",
+      "priceUsdc": "0.005",
+      "method": "POST",
+      "endpoint": "https://br-danfse-rtc-x402.architect-x402.workers.dev/generate",
+      "openApiUrl": "https://br-danfse-rtc-x402.architect-x402.workers.dev/openapi.json",
+      "sampleUrl": "https://br-danfse-rtc-x402.architect-x402.workers.dev/sample",
+      "mcpEndpoint": "https://br-danfse-rtc-x402.architect-x402.workers.dev/mcp",
+      "catalogUrl": "https://br-danfse-rtc-x402.architect-x402.workers.dev/.well-known/x402",
+      "llmsUrl": "https://br-danfse-rtc-x402.architect-x402.workers.dev/llms.txt",
+      "summary": "Generates official NFS-e Nacional DANFSe documents and calculates Brazil Tax Reform (LC 214/2025) CBS, IBS, and ISS taxes."
     },
     {
       "id": "br-docs-parser-x402",
@@ -99,6 +120,20 @@
       "catalogUrl": "https://web-enrichment-x402.architect-x402.workers.dev/.well-known/x402",
       "llmsUrl": "https://web-enrichment-x402.architect-x402.workers.dev/llms.txt",
       "summary": "Converts noisy HTML pages into clean Markdown, structured JSON tables, and JSON-LD metadata with token-savings telemetry."
+    },
+    {
+      "id": "agent-email-x402",
+      "category": "global-agent-comms",
+      "name": "Agent Email Dispatcher (Markdown to HTML)",
+      "priceUsdc": "0.005",
+      "method": "POST",
+      "endpoint": "https://agent-email-x402.architect-x402.workers.dev/send",
+      "openApiUrl": "https://agent-email-x402.architect-x402.workers.dev/openapi.json",
+      "sampleUrl": "https://agent-email-x402.architect-x402.workers.dev/sample",
+      "mcpEndpoint": "https://agent-email-x402.architect-x402.workers.dev/mcp",
+      "catalogUrl": "https://agent-email-x402.architect-x402.workers.dev/.well-known/x402",
+      "llmsUrl": "https://agent-email-x402.architect-x402.workers.dev/llms.txt",
+      "summary": "Pay-per-call transactional and alert email gateway for autonomous AI agents with automatic Markdown-to-responsive-HTML compilation and zero SaaS subscription."
     },
     {
       "id": "agent-guard-x402",
