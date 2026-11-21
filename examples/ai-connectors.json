@@ -1,6 +1,6 @@
 {
   "mcpServers": {
-    "brazil-ai-suite": {
+    "latam-brazil-ai-x402": {
       "command": "npx",
       "args": ["-y", "github:brunopompeo1/brazil-ai-fiscal-apis-x402"],
       "env": {
@@ -10,32 +10,15 @@
     }
   },
   "_individualRemoteMcpServers": {
-    "br-nfe-xml-auditor": {
-      "url": "https://br-nfe-xml-auditor-x402.architect-x402.workers.dev/mcp"
-    },
-    "br-danfse-rtc": {
-      "url": "https://br-danfse-rtc-x402.architect-x402.workers.dev/mcp"
-    },
-    "br-docs-parser": {
-      "url": "https://br-docs-parser-x402.architect-x402.workers.dev/mcp"
-    },
-    "br-tax-payroll-calc": {
-      "url": "https://br-tax-payroll-calc-x402.architect-x402.workers.dev/mcp"
-    },
-    "br-business-intel": {
-      "url": "https://br-business-intel-x402.architect-x402.workers.dev/mcp"
-    },
-    "br-fin-calculators": {
-      "url": "https://br-fin-calculators-x402.architect-x402.workers.dev/mcp"
-    },
-    "web-enrichment": {
-      "url": "https://web-enrichment-x402.architect-x402.workers.dev/mcp"
-    },
-    "agent-email": {
-      "url": "https://agent-email-x402.architect-x402.workers.dev/mcp"
-    },
-    "agent-guard": {
-      "url": "https://agent-guard-x402.architect-x402.workers.dev/mcp"
-    }
+    "agent-guard": { "url": "https://guard.brunopompeo.com.br/mcp" },
+    "web-enrichment": { "url": "https://web.brunopompeo.com.br/mcp" },
+    "agent-email": { "url": "https://email.brunopompeo.com.br/mcp" },
+    "latam-biz": { "url": "https://latam.brunopompeo.com.br/mcp" },
+    "br-nfe-xml-auditor": { "url": "https://nfe.brunopompeo.com.br/mcp" },
+    "br-danfse-rtc": { "url": "https://danfse.brunopompeo.com.br/mcp" },
+    "br-docs-parser": { "url": "https://docs.brunopompeo.com.br/mcp" },
+    "br-tax-payroll-calc": { "url": "https://tax.brunopompeo.com.br/mcp" },
+    "br-business-intel": { "url": "https://intel.brunopompeo.com.br/mcp" },
+    "br-fin-calculators": { "url": "https://fin.brunopompeo.com.br/mcp" }
   }
 }

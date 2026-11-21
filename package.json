@@ -1,54 +1,73 @@
 {
-    "name": "brazil-ai-x402-mcp",
-    "version": "2.4.0",
-    "description": "Unified MCP Server for Brazil AI & x402 Suite (9 Edge APIs: NF-e XML Auditor, DANFSe RTC CBS/IBS, Boleto/DARF Parser, Simples Nacional/Fator R, CNPJ/PIX, BCB IPCA/PTAX, Web Scraper, Transactional Email, Prompt Injection Guard) with native Coinbase CDP x402 v2 Base USDC micropayments.",
-    "type": "module",
-    "main": "src/index.mjs",
-    "bin": {
-          "brazil-ai-x402-mcp": "bin/cli.mjs"
-    },
-    "files": [
-          "bin/",
-          "src/",
-          "README.md"
-    ],
-    "scripts": {
-          "start": "node ./bin/cli.mjs",
-          "test": "node ./test/smoke.mjs"
-    },
-    "keywords": [
-          "mcp",
-          "model-context-protocol",
-          "x402",
-          "coinbase-cdp",
-          "agentic-market",
-          "brazil",
-          "nfe",
-          "danfse",
-          "reforma-tributaria",
-          "cbs-ibs",
-          "boleto",
-          "simples-nacional",
-          "cnpj",
-          "pix",
-          "transactional-email",
-          "usdc",
-          "base",
-          "cloudflare-workers"
-    ],
-    "author": "Bruno Pompeo (Architect x402)",
-    "license": "MIT",
-    "repository": {
-          "type": "git",
-          "url": "git+https://github.com/brunopompeo1/brazil-ai-fiscal-apis-x402.git"
-    },
-    "engines": {
-          "node": ">=18.0.0"
-    },
-    "dependencies": {
-          "@modelcontextprotocol/sdk": "^1.32.2",
-          "@x402/evm": "^2.31.0",
-          "@x402/fetch": "^2.31.0",
-          "viem": "^2.23.0"
-    }
+  "name": "brazil-ai-x402-mcp",
+  "version": "2.5.0",
+  "description": "Unified MCP Server for Global + LATAM AI & x402 Suite (10 Edge APIs: LATAM Tax/Bank & FX for MX/AR/CL/CO/PE/UY/BR, Prompt Guard, Web Enrichment, Agent Email, NF-e XML Auditor, DANFSe RTC CBS/IBS, Boleto/DARF Parser, Simples Nacional/Payroll, CNPJ/PIX, BCB IPCA/PTAX) with native x402 v2 Base USDC micropayments.",
+  "type": "module",
+  "main": "src/index.mjs",
+  "bin": {
+    "brazil-ai-x402-mcp": "bin/cli.mjs"
+  },
+  "files": [
+    "bin/",
+    "src/",
+    "README.md",
+    "README.en.md",
+    "README.es.md"
+  ],
+  "scripts": {
+    "start": "node ./bin/cli.mjs",
+    "test": "node ./test/smoke.mjs"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "x402",
+    "coinbase-cdp",
+    "agentic-market",
+    "latam",
+    "mexico",
+    "rfc",
+    "curp",
+    "clabe",
+    "argentina",
+    "cuit",
+    "cbu",
+    "chile",
+    "rut",
+    "colombia",
+    "nit",
+    "peru",
+    "ruc",
+    "uruguay",
+    "brazil",
+    "nfe",
+    "danfse",
+    "reforma-tributaria",
+    "cbs-ibs",
+    "boleto",
+    "simples-nacional",
+    "cnpj",
+    "pix",
+    "fx",
+    "transactional-email",
+    "prompt-injection",
+    "usdc",
+    "base",
+    "cloudflare-workers"
+  ],
+  "author": "Bruno Pompeo (Architect x402)",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brunopompeo1/brazil-ai-fiscal-apis-x402.git"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.32.2",
+    "@x402/evm": "^2.31.0",
+    "@x402/fetch": "^2.31.0",
+    "viem": "^2.23.0"
+  }
 }

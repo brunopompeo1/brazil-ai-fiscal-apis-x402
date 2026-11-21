@@ -1,23 +1,30 @@
-# Suíte Brasil IA — APIs Fiscais, Contábeis, Financeiras, E-mail & Segurança (x402 + MCP)
+# Global + LATAM AI & x402 API Suite (v2.5.0 — 10 Serverless Edge APIs)
 
-> Coleção de 9 microsserviços serverless em produção para **escritórios de contabilidade, ERPs, fintechs, automações (n8n/Make) e agentes autônomos de IA**.
+> EN: 10 ultra-fast Cloudflare Edge microservices (10-30 ms in Latin America) for autonomous AI agents, fintechs, ERPs, n8n/LangChain workflows, and accounting automation. Pay per call in USDC on Base (`eip155:8453`) via x402 v2 — zero signup, zero API keys required (or optional B2B API Key).
+> ES: 10 microservicios serverless en Cloudflare Edge para agentes de IA y fintechs en México, Argentina, Chile, Colombia, Perú, Uruguay y Brasil. Pago por llamada en USDC (Base) vía protocolo x402 v2, sin registro previo.
+> PT: 10 microsserviços serverless na borda Cloudflare para agentes autônomos de IA (3 ferramentas globais + 7 APIs fintech/fiscais LATAM e Brasil), monetizados nativamente via x402 v2 em USDC na Base ou chave B2B.
 
-## Servidor MCP Unificado (1 comando via npx)
-- `npx -y github:brunopompeo1/brazil-ai-fiscal-apis-x402`
-- Expõe todas as 9 APIs pagas + `brazil_ai_suite_status` (grátis) com pagamento automático x402 via `@x402/fetch` (`X402_PRIVATE_KEY`) ou `BRAZIL_AI_API_KEY`.
+## Unified Gateway & MCP Server
+- Unified API Hub: https://api.brunopompeo.com.br (`GET /llms.txt`, `GET /openapi.json`, `GET /catalog.json`, `GET /health`)
+- Unified MCP Server (1 command): `npx -y github:brunopompeo1/brazil-ai-fiscal-apis-x402` (10 paid tools + 1 free status tool)
+- Settlement Wallet (`payTo`): `0x20990fB239296a0A2d923C200Cb1C21187e2dA23` (USDC on Base `eip155:8453`)
 
-## Descoberta Rápida (Rede Base / USDC — Coinbase CDP Facilitator + Agentic Market + x402scan + PayAI Bazaar)
+## Global High-Volume Agent Tools (3)
+1. **Agent Guard — Prompt Injection & PII Firewall** — `POST https://guard.brunopompeo.com.br/guard` ($0.008 USDC) | Hybrid Llama Guard 3 8B + heuristics + PII/secret redaction | `/sample` `/openapi.json` `/mcp`
+2. **Web Enrichment — Clean HTML → Markdown & JSON Tables** — `GET https://web.brunopompeo.com.br/clean?url=<URL>&format=json` ($0.002 USDC) | Up to 85% token reduction for RAG & LLM agents | `/sample` `/openapi.json` `/mcp`
+3. **Agent Email — Transactional Email Dispatcher** — `POST https://email.brunopompeo.com.br/send` ($0.005 USDC) | Pay-per-send Markdown→HTML email with `dryRun` mode, zero SaaS subscription | `/sample` `/openapi.json` `/mcp`
 
-1. **Auditoria de XML NF-e/NFC-e (SEFAZ 4.00)** — `POST https://br-nfe-xml-auditor-x402.architect-x402.workers.dev/audit` ($0.010 USDC) | OpenAPI: `/openapi.json` | Amostra Grátis: `/sample` | MCP: `/mcp`
-2. **Gerador DANFSe Nacional & Reforma Tributária (RTC CBS/IBS LC 214/2025)** — `POST https://br-danfse-rtc-x402.architect-x402.workers.dev/generate` ($0.005 USDC) | OpenAPI: `/openapi.json` | Amostra Grátis: `/sample` | MCP: `/mcp`
-3. **Leitor & Validador de Boletos FEBRABAN, Guias DARF/FGTS/IPTU e Chaves NF-e** — `POST https://br-docs-parser-x402.architect-x402.workers.dev/parse` ($0.008 USDC) | OpenAPI: `/openapi.json` | Amostra Grátis: `/sample` | MCP: `/mcp`
-4. **Motor Tributário & Folha (Simples Nacional, Fator R, INSS, IRRF, Retenções NFS-e)** — `POST https://br-tax-payroll-calc-x402.architect-x402.workers.dev/calc` ($0.008 USDC) | OpenAPI: `/openapi.json` | Amostra Grátis: `/sample` | MCP: `/mcp`
-5. **Dossiê CNPJ (KYB), Geo-CEP IBGE, Validador CPF/CNPJ & PIX EMVCo CRC16** — `POST https://br-business-intel-x402.architect-x402.workers.dev/intel` ($0.010 USDC) | OpenAPI: `/openapi.json` | Amostra Grátis: `/sample` | MCP: `/mcp`
-6. **Calculadoras Banco Central (IPCA, IGP-M, INPC, Selic, CDI, PTAX e Price/SAC)** — `POST https://br-fin-calculators-x402.architect-x402.workers.dev/fin` ($0.005 USDC) | OpenAPI: `/openapi.json` | Amostra Grátis: `/sample` | MCP: `/mcp`
-7. **Limpeza Web HTML → Markdown + Tabelas JSON** — `GET https://web-enrichment-x402.architect-x402.workers.dev/clean?url=<URL>&format=json` ($0.002 USDC) | OpenAPI: `/openapi.json` | Amostra Grátis: `/sample` | MCP: `/mcp`
-8. **Disparo de E-mail Transacional para Agentes (Markdown → HTML sem assinatura)** — `POST https://agent-email-x402.architect-x402.workers.dev/send` ($0.005 USDC) | OpenAPI: `/openapi.json` | Amostra Grátis: `/sample` | MCP: `/mcp`
-9. **Firewall Anti-Prompt Injection & Redação de PII/CPF/Segredos** — `POST https://agent-guard-x402.architect-x402.workers.dev/guard` ($0.008 USDC) | OpenAPI: `/openapi.json` | Amostra Grátis: `/sample` | MCP: `/mcp`
+## LATAM & Brazil Fintech / Fiscal Suite (7)
+4. **LATAM Business, Fiscal & Banking Validator + Live FX (7 Countries)** — `POST https://latam.brunopompeo.com.br/latam` ($0.008 USDC) | MX (RFC, CURP, CLABE), AR (CUIT/CUIL, CBU), CL (RUT/RUN), CO (NIT), PE (RUC), UY (RUT), BR (CPF/CNPJ) + live FX (MXN/ARS/CLP/COP/PEN/UYU/BRL/USD/EUR) | `/sample` `/openapi.json` `/mcp`
+5. **BR NF-e / NFC-e XML Auditor (SEFAZ 4.00)** — `POST https://nfe.brunopompeo.com.br/audit` ($0.010 USDC) | ~90% XML token savings, vProd/vNF math check, CFOP/NCM/IBS/CBS compliance | `/sample` `/openapi.json` `/mcp`
+6. **BR DANFSe Nacional & Tax Reform (RTC CBS/IBS LC 214/2025)** — `POST https://danfse.brunopompeo.com.br/generate` ($0.005 USDC) | Official NFS-e Nacional 2026 DANFSe generator + CBS/IBS/ISS calculator | `/sample` `/openapi.json` `/mcp`
+7. **BR Docs Parser — Boletos FEBRABAN, DARF/FGTS/IPTU & NF-e Keys** — `POST https://docs.brunopompeo.com.br/parse` ($0.008 USDC) | Post-Feb/2025 boleto factor engine + tax slip barcode decoder | `/sample` `/openapi.json` `/mcp`
+8. **BR Tax & Payroll Engine (Simples Nacional, Fator R, CLT, INSS/IRRF)** — `POST https://tax.brunopompeo.com.br/calc` ($0.008 USDC) | Deterministic payroll, Simples Anexos I-V and B2B NFS-e withholdings | `/sample` `/openapi.json` `/mcp`
+9. **BR Business Intel — CNPJ KYB Dossier, Geo-CEP & PIX EMVCo** — `POST https://intel.brunopompeo.com.br/intel` ($0.010 USDC) | Official Receita Federal QSA partners, risk score, IBGE CEP & PIX CRC16 | `/sample` `/openapi.json` `/mcp`
+10. **BR Central Bank Financial Calculators (IPCA, IGP-M, Selic, CDI, PTAX, SAC/Price)** — `POST https://fin.brunopompeo.com.br/fin` ($0.005 USDC) | Official BCB monetary correction, PTAX FX and loan schedules | `/sample` `/openapi.json` `/mcp`
 
-## Protocolo de Pagamento
-- Padrão: HTTP 402 Payment Required (`x402 v2`) em USDC na rede `eip155:8453` (Base Mainnet), com liquidação nativa via **Coinbase CDP Facilitator** (e fallback automático para PayAI).
-- Cada serviço expõe `GET /health`, `GET /openapi.json` (OpenAPI 3.1.0), `GET /sample` (amostra gratuita), `GET /llms.txt`, `GET /.well-known/x402` e `POST /mcp`.
+## Copy-Paste Templates
+- n8n Workflow (Guard + Web + LATAM): `examples/n8n-workflow-x402-latam.json`
+- LangChain / Vercel AI Tool: `examples/langchain-x402.ts`
+- TypeScript x402 Client: `examples/typescript-x402-client.ts`
+- Python x402 Client: `examples/python-x402-client.py`

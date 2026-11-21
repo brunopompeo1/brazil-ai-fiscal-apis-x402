@@ -1,0 +1,124 @@
+{
+  "name": "LATAM AI Agent Pipeline — Guard + Web Enrichment + LATAM KYC/FX (x402)",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "node-trigger",
+      "name": "Manual Trigger",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [200, 300]
+    },
+    {
+      "parameters": {
+        "values": {
+          "string": [
+            { "name": "untrustedText", "value": "Vendor onboarding: RFC SAT970701NN3, CLABE 002010077777777771, CUIT 30-50001091-2" },
+            { "name": "targetUrl", "value": "https://example.com" },
+            { "name": "rfc", "value": "SAT970701NN3" },
+            { "name": "clabe", "value": "002010077777777771" },
+            { "name": "cuit", "value": "30-50001091-2" },
+            { "name": "ruc", "value": "20131312955" }
+          ]
+        }
+      },
+      "id": "node-input",
+      "name": "Set Lead & KYC Input",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3,
+      "position": [440, 300]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://guard.brunopompeo.com.br/guard",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            { "name": "Content-Type", "value": "application/json" },
+            { "name": "X-API-Key", "value": "={{ $env.BRAZIL_AI_API_KEY || '' }}" },
+            { "name": "PAYMENT-SIGNATURE", "value": "={{ $env.X402_PAYMENT_SIGNATURE || '' }}" }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ text: $json.untrustedText, maskPii: true, deepScan: true }) }}",
+        "options": {
+          "response": { "response": { "neverError": true } }
+        }
+      },
+      "id": "node-guard",
+      "name": "1. Agent Guard (Prompt Injection & PII)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [700, 300]
+    },
+    {
+      "parameters": {
+        "method": "GET",
+        "url": "=https://web.brunopompeo.com.br/clean?url={{ encodeURIComponent($('Set Lead & KYC Input').item.json.targetUrl) }}&format=json",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            { "name": "X-API-Key", "value": "={{ $env.BRAZIL_AI_API_KEY || '' }}" },
+            { "name": "PAYMENT-SIGNATURE", "value": "={{ $env.X402_PAYMENT_SIGNATURE || '' }}" }
+          ]
+        },
+        "options": {
+          "response": { "response": { "neverError": true } }
+        }
+      },
+      "id": "node-web",
+      "name": "2. Web Enrichment (Clean Markdown)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [960, 300]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://latam.brunopompeo.com.br/latam",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            { "name": "Content-Type", "value": "application/json" },
+            { "name": "X-API-Key", "value": "={{ $env.BRAZIL_AI_API_KEY || '' }}" },
+            { "name": "PAYMENT-SIGNATURE", "value": "={{ $env.X402_PAYMENT_SIGNATURE || '' }}" }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ items: [{ value: $('Set Lead & KYC Input').item.json.rfc, country: 'MX', type: 'RFC' }, { value: $('Set Lead & KYC Input').item.json.clabe, country: 'MX', type: 'CLABE' }, { value: $('Set Lead & KYC Input').item.json.cuit, country: 'AR', type: 'CUIT' }, { value: $('Set Lead & KYC Input').item.json.ruc, country: 'PE', type: 'RUC' }], fx: { amount: 1000, from: 'USD', to: ['MXN', 'ARS', 'CLP', 'COP', 'PEN', 'UYU', 'BRL'] } }) }}",
+        "options": {
+          "response": { "response": { "neverError": true } }
+        }
+      },
+      "id": "node-latam",
+      "name": "3. LATAM Business & FX Validator",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [1220, 300]
+    }
+  ],
+  "connections": {
+    "Manual Trigger": {
+      "main": [[{ "node": "Set Lead & KYC Input", "type": "main", "index": 0 }]]
+    },
+    "Set Lead & KYC Input": {
+      "main": [[{ "node": "1. Agent Guard (Prompt Injection & PII)", "type": "main", "index": 0 }]]
+    },
+    "1. Agent Guard (Prompt Injection & PII)": {
+      "main": [[{ "node": "2. Web Enrichment (Clean Markdown)", "type": "main", "index": 0 }]]
+    },
+    "2. Web Enrichment (Clean Markdown)": {
+      "main": [[{ "node": "3. LATAM Business & FX Validator", "type": "main", "index": 0 }]]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "meta": {
+    "templateCredsSetupCompleted": false,
+    "notes": "Set BRAZIL_AI_API_KEY (B2B plan) or sign x402 v2 requests via @x402/fetch proxy. Without credentials, each node returns HTTP 402 with PAYMENT-REQUIRED header without breaking the workflow."
+  }
+}

@@ -1,9 +1,153 @@
 export const SUITE_TOOLS = [
   {
+    name: "agent_guard_sanitize",
+    priceUsd: "0.008",
+    method: "POST",
+    endpoint: "https://guard.brunopompeo.com.br/guard",
+    description:
+      "Hybrid Edge AI firewall (@cf/meta/llama-guard-3-8b + multi-language regex + Base64 decoder) that detects prompt injection and masks corporate PII/secrets ($0.008 USDC via x402 on Base).",
+    inputSchema: {
+      type: "object",
+      properties: {
+        text: {
+          type: "string",
+          description:
+            "Untrusted external input (scraped HTML, email, support ticket, webhook) to inspect and sanitize",
+        },
+        maskPii: {
+          type: "boolean",
+          description:
+            "Redact emails, credit cards, CPFs, CNPJs, API tokens, and private keys (default: true)",
+        },
+        deepScan: {
+          type: "boolean",
+          description:
+            "Run Cloudflare Workers AI (@cf/meta/llama-guard-3-8b) semantic classifier (default: true)",
+        },
+      },
+      required: ["text"],
+    },
+  },
+  {
+    name: "web_enrichment_clean",
+    priceUsd: "0.002",
+    method: "GET",
+    endpoint: "https://web.brunopompeo.com.br/clean",
+    description:
+      "Scrapes any URL at the Cloudflare Edge and returns clean Markdown, structured HTML tables as JSON, Schema.org JSON-LD, and token compression metrics ($0.002 USDC via x402 on Base).",
+    inputSchema: {
+      type: "object",
+      properties: {
+        url: {
+          type: "string",
+          description:
+            "Target HTTP/HTTPS URL to scrape, clean, and extract structured tables/JSON-LD",
+        },
+        format: {
+          type: "string",
+          enum: ["json", "markdown"],
+          description: "Output format (default: json)",
+        },
+      },
+      required: ["url"],
+    },
+  },
+  {
+    name: "agent_send_email",
+    priceUsd: "0.005",
+    method: "POST",
+    endpoint: "https://email.brunopompeo.com.br/send",
+    description:
+      "Dispatches transactional or alert emails on behalf of an autonomous AI agent with automatic Markdown-to-responsive-HTML compilation and zero SaaS subscription ($0.005 USDC via x402 on Base).",
+    inputSchema: {
+      type: "object",
+      properties: {
+        to: {
+          type: "string",
+          description: "Recipient email address (or comma-separated list of recipients)",
+        },
+        subject: {
+          type: "string",
+          description: "Email subject line",
+        },
+        markdown: {
+          type: "string",
+          description: "Markdown email content (automatically compiled into responsive HTML email)",
+        },
+        text: {
+          type: "string",
+          description: "Optional plain text body fallback",
+        },
+        html: {
+          type: "string",
+          description: "Optional raw HTML body override",
+        },
+        replyTo: {
+          type: "string",
+          description: "Optional Reply-To email address",
+        },
+      },
+      required: ["to", "subject"],
+    },
+  },
+  {
+    name: "latam_validate_and_fx",
+    priceUsd: "0.008",
+    method: "POST",
+    endpoint: "https://latam.brunopompeo.com.br/latam",
+    description:
+      "Validates & decodes LATAM tax IDs and bank accounts across 7 countries (MX RFC/CURP/CLABE, AR CUIT/CUIL/CBU, CL RUT/RUN, CO NIT, PE RUC, UY RUT, BR CPF/CNPJ) with auto-detection, batch mode (up to 100), and real-time LATAM FX rates (MXN/ARS/CLP/COP/PEN/UYU/BRL/USD/EUR) ($0.008 USDC via x402 on Base).",
+    inputSchema: {
+      type: "object",
+      properties: {
+        value: {
+          type: "string",
+          description: "Single LATAM tax or bank identifier (auto-detected if country/type omitted)",
+        },
+        country: {
+          type: "string",
+          enum: ["MX", "AR", "CL", "CO", "PE", "UY", "BR"],
+        },
+        type: {
+          type: "string",
+          enum: ["RFC", "CURP", "CLABE", "CUIT", "CUIL", "CBU", "RUT", "RUT_CL", "RUT_UY", "NIT", "RUC", "CPF", "CNPJ"],
+        },
+        items: {
+          type: "array",
+          description: "Batch array of LATAM identifiers to validate in one call",
+          items: {
+            type: "object",
+            properties: {
+              value: { type: "string" },
+              country: { type: "string" },
+              type: { type: "string" },
+              label: { type: "string" },
+            },
+            required: ["value"],
+          },
+        },
+        fx: {
+          type: "object",
+          description: "Optional real-time LATAM FX conversion ({ amount, from, to })",
+          properties: {
+            amount: { type: "number" },
+            from: { type: "string" },
+            to: {
+              oneOf: [
+                { type: "string" },
+                { type: "array", items: { type: "string" } },
+              ],
+            },
+          },
+        },
+      },
+    },
+  },
+  {
     name: "br_nfe_xml_auditor",
     priceUsd: "0.010",
     method: "POST",
-    endpoint: "https://br-nfe-xml-auditor-x402.architect-x402.workers.dev/audit",
+    endpoint: "https://nfe.brunopompeo.com.br/audit",
     description:
       "Brazilian NF-e/NFC-e XML-to-JSON compressor (~90% token savings), mathematical & CFOP tax auditor, and 44-digit Access Key Mod-11 decoder ($0.010 USDC via x402 on Base).",
     inputSchema: {
@@ -36,7 +180,7 @@ export const SUITE_TOOLS = [
     name: "br_danfse_rtc_generate",
     priceUsd: "0.005",
     method: "POST",
-    endpoint: "https://br-danfse-rtc-x402.architect-x402.workers.dev/generate",
+    endpoint: "https://danfse.brunopompeo.com.br/generate",
     description:
       "Official Brazilian NFS-e Nacional DANFSe generator and Tax Reform (LC 214/2025) CBS/IBS/ISS calculator ($0.005 USDC via x402 on Base).",
     inputSchema: {
@@ -73,7 +217,7 @@ export const SUITE_TOOLS = [
     name: "br_docs_parser",
     priceUsd: "0.008",
     method: "POST",
-    endpoint: "https://br-docs-parser-x402.architect-x402.workers.dev/parse",
+    endpoint: "https://docs.brunopompeo.com.br/parse",
     description:
       "Brazilian FEBRABAN Bank Boleto (47/44), Tax/Utility Slip DARF/FGTS/IPTU (48/44), and NF-e Access Key (44) validator & decoder with post-2025 due date engine ($0.008 USDC via x402 on Base).",
     inputSchema: {
@@ -102,7 +246,7 @@ export const SUITE_TOOLS = [
     name: "br_tax_payroll_calc",
     priceUsd: "0.008",
     method: "POST",
-    endpoint: "https://br-tax-payroll-calc-x402.architect-x402.workers.dev/calc",
+    endpoint: "https://tax.brunopompeo.com.br/calc",
     description:
       "Deterministic Brazilian tax & payroll calculator: Simples Nacional (Anexos I-V + Fator R), progressive INSS/IRRF, FGTS, and B2B NFS-e withholdings ($0.008 USDC via x402 on Base).",
     inputSchema: {
@@ -163,7 +307,7 @@ export const SUITE_TOOLS = [
     name: "br_business_intel",
     priceUsd: "0.010",
     method: "POST",
-    endpoint: "https://br-business-intel-x402.architect-x402.workers.dev/intel",
+    endpoint: "https://intel.brunopompeo.com.br/intel",
     description:
       "Brazilian Corporate CNPJ KYB Dossier (QSA partners, Simples/MEI, B2B Risk Score), IBGE Geo-CEP lookup, CPF/CNPJ Mod-11 validator, and Central Bank PIX BRCode (EMVCo + CRC16) generator/decoder ($0.010 USDC via x402 on Base).",
     inputSchema: {
@@ -220,7 +364,7 @@ export const SUITE_TOOLS = [
     name: "br_fin_calculators",
     priceUsd: "0.005",
     method: "POST",
-    endpoint: "https://br-fin-calculators-x402.architect-x402.workers.dev/fin",
+    endpoint: "https://fin.brunopompeo.com.br/fin",
     description:
       "Official Central Bank of Brazil (BCB) IPCA/IGPM/Selic/CDI monetary correction, PTAX currency conversion, and Price/SAC loan simulator ($0.005 USDC via x402 on Base).",
     inputSchema: {
@@ -269,97 +413,6 @@ export const SUITE_TOOLS = [
             "Generate a concise financial brief via Cloudflare Workers AI (default: true).",
         },
       },
-    },
-  },
-  {
-    name: "web_enrichment_clean",
-    priceUsd: "0.002",
-    method: "GET",
-    endpoint: "https://web-enrichment-x402.architect-x402.workers.dev/clean",
-    description:
-      "Scrapes any URL at the Cloudflare Edge and returns clean Markdown, structured HTML tables as JSON, Schema.org JSON-LD, and token compression metrics ($0.002 USDC via x402 on Base).",
-    inputSchema: {
-      type: "object",
-      properties: {
-        url: {
-          type: "string",
-          description:
-            "Target HTTP/HTTPS URL to scrape, clean, and extract structured tables/JSON-LD",
-        },
-        format: {
-          type: "string",
-          enum: ["json", "markdown"],
-          description: "Output format (default: json)",
-        },
-      },
-      required: ["url"],
-    },
-  },
-  {
-    name: "agent_send_email",
-    priceUsd: "0.005",
-    method: "POST",
-    endpoint: "https://agent-email-x402.architect-x402.workers.dev/send",
-    description:
-      "Dispatches transactional or alert emails on behalf of an autonomous AI agent with automatic Markdown-to-responsive-HTML compilation and zero SaaS subscription ($0.005 USDC via x402 on Base).",
-    inputSchema: {
-      type: "object",
-      properties: {
-        to: {
-          type: "string",
-          description: "Recipient email address (or comma-separated list of recipients)",
-        },
-        subject: {
-          type: "string",
-          description: "Email subject line",
-        },
-        markdown: {
-          type: "string",
-          description: "Markdown email content (automatically compiled into responsive HTML email)",
-        },
-        text: {
-          type: "string",
-          description: "Optional plain text body fallback",
-        },
-        html: {
-          type: "string",
-          description: "Optional raw HTML body override",
-        },
-        replyTo: {
-          type: "string",
-          description: "Optional Reply-To email address",
-        },
-      },
-      required: ["to", "subject"],
-    },
-  },
-  {
-    name: "agent_guard_sanitize",
-    priceUsd: "0.008",
-    method: "POST",
-    endpoint: "https://agent-guard-x402.architect-x402.workers.dev/guard",
-    description:
-      "Hybrid Edge AI firewall (@cf/meta/llama-guard-3-8b + multi-language regex + Base64 decoder) that detects prompt injection and masks corporate PII/secrets ($0.008 USDC via x402 on Base).",
-    inputSchema: {
-      type: "object",
-      properties: {
-        text: {
-          type: "string",
-          description:
-            "Untrusted external input (scraped HTML, email, support ticket, webhook) to inspect and sanitize",
-        },
-        maskPii: {
-          type: "boolean",
-          description:
-            "Redact emails, credit cards, CPFs, CNPJs, API tokens, and private keys (default: true)",
-        },
-        deepScan: {
-          type: "boolean",
-          description:
-            "Run Cloudflare Workers AI (@cf/meta/llama-guard-3-8b) semantic classifier (default: true)",
-        },
-      },
-      required: ["text"],
     },
   },
 ];
