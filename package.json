@@ -1,5 +1,5 @@
-{
-  "name": "brazil-ai-x402-mcp",
+﻿{
+  "name": "@brunopompeo/brazil-ai-x402-mcp",
   "version": "2.6.0",
   "description": "Unified MCP Server for Global + LATAM AI & x402 Suite (10 Edge APIs: Official Brazil Receita Federal RTC Calculator Base V0073 without Java server, NF-e CBS/IBS Tax Credit Auditor, LATAM Tax/Bank & FX for 7 countries, Prompt Guard, Web Enrichment, Agent Email, Boleto/DARF, Payroll, CNPJ/PIX, BCB IPCA/PTAX) with native x402 v2 Base USDC micropayments.",
   "type": "module",
