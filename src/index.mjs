@@ -84,7 +84,7 @@ export async function runMcpServer() {
   const paymentCtx = createPaymentClient();
 
   const server = new Server(
-    { name: "brazil-ai-x402-mcp", version: "2.5.0" },
+    { name: "brazil-ai-x402-mcp", version: "2.6.0" },
     { capabilities: { tools: {} } }
   );
 
@@ -112,7 +112,7 @@ export async function runMcpServer() {
             text: JSON.stringify(
               {
                 suite: "Global + LATAM AI & x402 Suite",
-                version: "2.5.0",
+                version: "2.6.0",
                 network: "eip155:8453 (Base Mainnet)",
                 currency: "USDC",
                 paymentMode: paymentCtx.mode,

@@ -1,7 +1,7 @@
 {
   "name": "brazil-ai-x402-mcp",
-  "version": "2.5.0",
-  "description": "Unified MCP Server for Global + LATAM AI & x402 Suite (10 Edge APIs: LATAM Tax/Bank & FX for MX/AR/CL/CO/PE/UY/BR, Prompt Guard, Web Enrichment, Agent Email, NF-e XML Auditor, DANFSe RTC CBS/IBS, Boleto/DARF Parser, Simples Nacional/Payroll, CNPJ/PIX, BCB IPCA/PTAX) with native x402 v2 Base USDC micropayments.",
+  "version": "2.6.0",
+  "description": "Unified MCP Server for Global + LATAM AI & x402 Suite (10 Edge APIs: Official Brazil Receita Federal RTC Calculator Base V0073 without Java server, NF-e CBS/IBS Tax Credit Auditor, LATAM Tax/Bank & FX for 7 countries, Prompt Guard, Web Enrichment, Agent Email, Boleto/DARF, Payroll, CNPJ/PIX, BCB IPCA/PTAX) with native x402 v2 Base USDC micropayments.",
   "type": "module",
   "main": "src/index.mjs",
   "bin": {
@@ -53,7 +53,11 @@
     "prompt-injection",
     "usdc",
     "base",
-    "cloudflare-workers"
+    "cloudflare-workers",
+    "cclasstrib",
+    "lc-214-2025",
+    "receita-federal",
+    "tax-credit-audit"
   ],
   "author": "Bruno Pompeo (Architect x402)",
   "license": "MIT",

@@ -1,6 +1,6 @@
 {
   "suite": "Global + LATAM AI & x402 Enterprise Suite",
-  "version": "2.5.0",
+  "version": "2.6.0",
   "gateway": "https://api.brunopompeo.com.br",
   "network": "base",
   "chainId": "eip155:8453",
@@ -8,7 +8,11 @@
   "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
   "payTo": "0x20990fB239296a0A2d923C200Cb1C21187e2dA23",
   "paymentProtocol": "x402-v2",
-  "languages": ["en", "es", "pt"],
+  "languages": [
+    "en",
+    "es",
+    "pt"
+  ],
   "facilitators": {
     "primary": "Coinbase CDP Facilitator (api.cdp.coinbase.com/platform/v2/x402)",
     "fallback": "PayAI Facilitator (facilitator.payai.network)"
@@ -101,7 +105,7 @@
       "id": "br-nfe-xml-auditor-x402",
       "group": "latam-fintech-fiscal",
       "category": "brazil-fiscal",
-      "name": "Brazil NF-e XML Auditor & Key Engine",
+      "name": "Brazil NF-e XML & RTC CBS/IBS Credit Auditor (Procurement & Fleet)",
       "priceUsdc": "0.01",
       "method": "POST",
       "endpoint": "https://nfe.brunopompeo.com.br/audit",
@@ -112,13 +116,13 @@
       "mcpEndpoint": "https://nfe.brunopompeo.com.br/mcp",
       "catalogUrl": "https://nfe.brunopompeo.com.br/.well-known/x402",
       "llmsUrl": "https://nfe.brunopompeo.com.br/llms.txt",
-      "summary": "Compresses SEFAZ 4.00 NF-e/NFC-e XML (~90% token savings), reconciles vProd/vNF math, validates CFOP/NCM/cStat=100, and decodes 44-digit Mod-11 access keys."
+      "summary": "Compresses SEFAZ 4.00 NF-e/NFC-e XML (~90% token savings), supports single/batch xmls[] (up to 25) or direct items[], audits LC 214/2025 CBS/IBS tax credits against official RFB Base V0073, quantifies BRL credit at risk, and builds ready-to-send supplierAlert drafts."
     },
     {
       "id": "br-danfse-rtc-x402",
       "group": "latam-fintech-fiscal",
       "category": "brazil-tax-reform",
-      "name": "Brazil DANFSe Nacional & Tax Reform (RTC CBS/IBS) Engine",
+      "name": "Brazil Official RFB RTC Calculator (Base V0073) & DANFSe — Zero Java Server",
       "priceUsdc": "0.005",
       "method": "POST",
       "endpoint": "https://danfse.brunopompeo.com.br/generate",
@@ -129,7 +133,9 @@
       "mcpEndpoint": "https://danfse.brunopompeo.com.br/mcp",
       "catalogUrl": "https://danfse.brunopompeo.com.br/.well-known/x402",
       "llmsUrl": "https://danfse.brunopompeo.com.br/llms.txt",
-      "summary": "Generates official NFS-e Nacional DANFSe documents and calculates Brazil Tax Reform (LC 214/2025) CBS, IBS, and ISS taxes."
+      "summary": "Official Receita Federal RTC CBS/IBS Calculator on Cloudflare Edge (Base V0073: 170 cClassTrib, 450 NCMs, 89 NBS, legal reductions 50%/60%/100%, Simples Nacional Annexes I-V, 2026-2033 transition) + DANFSe generator — zero Java 21 / Spring Boot required.",
+      "calculateEndpoint": "https://danfse.brunopompeo.com.br/calculate",
+      "tablesUrl": "https://danfse.brunopompeo.com.br/tables"
     },
     {
       "id": "br-docs-parser-x402",
@@ -199,5 +205,7 @@
       "llmsUrl": "https://fin.brunopompeo.com.br/llms.txt",
       "summary": "Official BCB SGS monetary correction (IPCA, IGPM, INPC, SELIC, CDI), official BCB PTAX FX (BRL/USD/EUR/GBP), and Price/SAC loan simulator."
     }
-  ]
+  ],
+  "rfbRtcBaseVersion": "V0073",
+  "rtcRecipesUrl": "https://github.com/brunopompeo1/brazil-ai-fiscal-apis-x402/blob/main/docs/RECEITA_4_AGENTES_REFORMA_TRIBUTARIA.md"
 }

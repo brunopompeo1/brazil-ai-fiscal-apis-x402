@@ -1,5 +1,8 @@
 # Suite Global + LATAM de APIs IA & x402 — 10 Microservicios Serverless (x402 v2 + MCP)
 
+
+> **Novedad v2.6.0 — Reforma Tributaria Oficial de Brasil (LC 214/2025, Base RFB V0073) sin servidor Java:** [`danfse.brunopompeo.com.br`](https://danfse.brunopompeo.com.br/tables) incorpora los 170 códigos oficiales `cClassTrib`, reducciones legales, Simples Nacional y transición 2026–2033; [`nfe.brunopompeo.com.br`](https://nfe.brunopompeo.com.br/sample) audita créditos CBS/IBS en BRL (lote `xmls[]`) con `supplierAlert` listo para enviar. Ver [`docs/RECEITA_4_AGENTES_REFORMA_TRIBUTARIA.md`](./docs/RECEITA_4_AGENTES_REFORMA_TRIBUTARIA.md) y [`examples/rtc-4-agents-workflow.mjs`](./examples/rtc-4-agents-workflow.mjs).
+
 > [English (README.en.md)](./README.en.md) | [Português (README.md)](./README.md) | [Hub Unificado (api.brunopompeo.com.br)](https://api.brunopompeo.com.br) | [Catálogo JSON](./catalog.json) | [llms.txt](./llms.txt)
 
 Colección en producción de **10 APIs serverless en el borde de Cloudflare** (**10–30 ms de latencia en México, Argentina, Chile, Colombia, Perú, Uruguay y Brasil**), diseñadas específicamente para **agentes autónomos de IA, fintechs, flujos KYC/onboarding, n8n, LangChain y ERPs**.

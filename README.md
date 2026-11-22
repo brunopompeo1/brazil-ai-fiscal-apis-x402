@@ -24,12 +24,19 @@ Conjunto de **10 APIs serverless em produção** na borda Cloudflare (**10–30 
 | Serviço | O que resolve na prática | Endpoint Pago (x402) | Preço (Base USDC) | Amostra Grátis |
 | :--- | :--- | :--- | :--- | :--- |
 | **4. LATAM Business & FX (NOVO v2.5)** | Valida e decodifica documentos fiscais/bancários de **7 países** (MX RFC/CURP/CLABE, AR CUIT/CUIL/CBU, CL RUT/RUN, CO NIT, PE RUC, UY RUT, BR CPF/CNPJ) em lote + **câmbio LATAM em tempo real** (`MXN/ARS/CLP/COP/PEN/UYU/BRL/USD/EUR`) | `POST https://latam.brunopompeo.com.br/latam` | `$0.008` | [`/sample`](https://latam.brunopompeo.com.br/sample) |
-| **5. Auditor XML NF-e / NFC-e** | Comprime XML SEFAZ 4.00 (~90% menos tokens), confere matemática (`vProd`/`vNF`), CFOP, NCM, `cStat=100` e Reforma IBS/CBS | `POST https://nfe.brunopompeo.com.br/audit` | `$0.010` | [`/sample`](https://nfe.brunopompeo.com.br/sample) |
-| **6. DANFSe Nacional & RTC 2026** | Gera DANFSe oficial da NFS-e Nacional e calcula tributos da Reforma Tributária (CBS, IBS e ISS — LC 214/2025) | `POST https://danfse.brunopompeo.com.br/generate` | `$0.005` | [`/sample`](https://danfse.brunopompeo.com.br/sample) |
+| **5. Auditor XML NF-e & Crédito CBS/IBS (v2.6)** | Comprime XML SEFAZ 4.00 (~90% menos tokens), audita **crédito tributário CBS/IBS (Compras & Frota, lote `xmls[]` até 25)** na Base RFB V0073, calcula R$ em risco e gera `supplierAlert` pronto para cobrar o fornecedor | `POST https://nfe.brunopompeo.com.br/audit` | `$0.010` | [`/sample`](https://nfe.brunopompeo.com.br/sample) |
+| **6. Calculadora RTC Oficial RFB (V0073) & DANFSe (v2.6)** | **Sem servidor Java 21/Spring Boot:** 170 `cClassTrib` oficiais, reduções automáticas (Construção 50%, Saúde/Educação 60%, Cesta Básica 100%), Simples Nacional, transição 2026–2033 e DANFSe | `POST https://danfse.brunopompeo.com.br/generate` | `$0.005` | [`/sample`](https://danfse.brunopompeo.com.br/sample) / [`/tables`](https://danfse.brunopompeo.com.br/tables) |
 | **7. Leitor de Boletos & Guias BR** | Valida e decodifica Boletos FEBRABAN (47/44 dígitos, fator pós-22/02/2025), guias DARF/FGTS/IPTU (48 dígitos) e chaves NF-e | `POST https://docs.brunopompeo.com.br/parse` | `$0.008` | [`/sample`](https://docs.brunopompeo.com.br/sample) |
 | **8. Motor Tributário & Folha BR** | Calcula Simples Nacional (Anexos I–V + otimização Fator R 28%), INSS/IRRF + FGTS e retenções B2B de NFS-e | `POST https://tax.brunopompeo.com.br/calc` | `$0.008` | [`/sample`](https://tax.brunopompeo.com.br/sample) |
 | **9. Business Intel CNPJ & PIX** | Dossiê completo de CNPJ (QSA, Simples/MEI, score de risco B2B), Geo-CEP IBGE, validador CPF/CNPJ e PIX EMVCo CRC16 | `POST https://intel.brunopompeo.com.br/intel` | `$0.010` | [`/sample`](https://intel.brunopompeo.com.br/sample) |
 | **10. Calculadoras Banco Central** | Correção monetária oficial (IPCA, IGP-M, INPC, Selic, CDI via SGS), câmbio PTAX oficial (BRL/USD/EUR/GBP) e simulador Price/SAC | `POST https://fin.brunopompeo.com.br/fin` | `$0.005` | [`/sample`](https://fin.brunopompeo.com.br/sample) |
+
+---
+
+## Receita Pronta: 4 Agentes da Reforma Tributária (Zero Servidor Java)
+
+- **Guia Copy-Paste Completo (Compras, Medição/Construção 50%, Frota em Lote e Faturamento XML→DANFSe→E-mail):** [`docs/RECEITA_4_AGENTES_REFORMA_TRIBUTARIA.md`](./docs/RECEITA_4_AGENTES_REFORMA_TRIBUTARIA.md)
+- **Script Executável:** `node examples/rtc-4-agents-workflow.mjs` (funciona grátis via `/tables` e `/sample`, ou ao vivo com `B2B_API_KEY` / x402)
 
 ---
 

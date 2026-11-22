@@ -149,7 +149,7 @@ export const SUITE_TOOLS = [
     method: "POST",
     endpoint: "https://nfe.brunopompeo.com.br/audit",
     description:
-      "Brazilian NF-e/NFC-e XML-to-JSON compressor (~90% token savings), mathematical & CFOP tax auditor, and 44-digit Access Key Mod-11 decoder ($0.010 USDC via x402 on Base).",
+      "Brazilian NF-e/NFC-e XML-to-JSON compressor (~90% token savings), Mod-11 key decoder, and LC 214/2025 CBS/IBS Tax Credit Auditor (single XML, batch xmls[] up to 25, or direct items[]) with official RFB Base V0073 and ready-to-send supplierAlert ($0.010 USDC via x402 on Base).",
     inputSchema: {
       type: "object",
       properties: {
@@ -168,6 +168,28 @@ export const SUITE_TOOLS = [
           description:
             "Include line-item details (NCM, CFOP, quantities, ICMS/IPI/PIS/COFINS) in output (default: true).",
         },
+        xmls: {
+          type: "array",
+          items: { type: "string" },
+          description: "Optional batch array of up to 25 NF-e/NFC-e XML strings for fleet/procurement CBS/IBS credit auditing.",
+        },
+        items: {
+          type: "array",
+          description: "Optional direct purchased items array ({ descricao, ncm, cClassTrib, valor, vCBS, vIBS }) for CBS/IBS credit auditing without XML.",
+          items: { type: "object" },
+        },
+        auditRtcCredit: {
+          type: "boolean",
+          description: "Enable LC 214/2025 CBS/IBS tax credit audit & supplierAlert generation (default: true).",
+        },
+        referenceYear: {
+          type: "integer",
+          description: "Calendar year (2026..2033) for expected CBS/IBS rates (default: invoice issue year >= 2026).",
+        },
+        supplierEmail: {
+          type: "string",
+          description: "Optional supplier email to prefill supplierAlert.emailDraft for agent-email-x402 chaining.",
+        },
         aiSummary: {
           type: "boolean",
           description:
@@ -182,7 +204,7 @@ export const SUITE_TOOLS = [
     method: "POST",
     endpoint: "https://danfse.brunopompeo.com.br/generate",
     description:
-      "Official Brazilian NFS-e Nacional DANFSe generator and Tax Reform (LC 214/2025) CBS/IBS/ISS calculator ($0.005 USDC via x402 on Base).",
+      "Official Brazil Receita Federal RTC Calculator (Base V0073 — 170 cClassTrib, 450 NCMs, 89 NBS, legal reductions 50%/60%/100%, Simples Nacional Annexes I-V, 2026-2033 transition) & DANFSe generator on Cloudflare Edge without Java server ($0.005 USDC via x402 on Base).",
     inputSchema: {
       type: "object",
       properties: {
@@ -206,9 +228,29 @@ export const SUITE_TOOLS = [
           type: "object",
           description: "Service taker identification (CPF/CNPJ, nome/razão social).",
         },
+        cClassTrib: {
+          type: "string",
+          description: "Official 6-digit Receita Federal cClassTrib code (Base V0073, e.g. '200046' construction 50%, '200029' health 60%, '200003' basic basket 100%).",
+        },
+        ncm: { type: "string", description: "Optional NCM code for automatic official RFB cClassTrib & reduction lookup." },
+        nbs: { type: "string", description: "Optional NBS service code for automatic official RFB cClassTrib lookup." },
+        setor: {
+          type: "string",
+          description: "Semantic sector alias (e.g. 'construcao_civil', 'saude', 'educacao', 'cesta_basica', 'profissao_intelectual', 'combustiveis').",
+        },
+        regime: {
+          type: "string",
+          enum: ["regime_regular", "simples_nacional", "simples_nacional_regular_por_fora"],
+          description: "Tax regime (default: 'regime_regular').",
+        },
+        ano: { type: "integer", description: "Calendar year for LC 214/2025 transition schedule (2026..2033, default: 2026)." },
+        anexoSimples: { type: "string", enum: ["I", "II", "III", "IV", "V"] },
+        rbt12: { type: "number", description: "Last 12-month gross revenue in BRL for Simples Nacional effective DAS rate." },
+        fatorR: { type: "number", description: "Payroll/revenue ratio (0..1) for Simples Nacional Annex III vs V." },
+        generateHtml: { type: "boolean", description: "Include printable DANFSe HTML in response (default: true)." },
         servico: {
           type: "object",
-          description: "Service values and ISS/CBS/IBS rates.",
+          description: "Service values, cTribNac, cClassTrib, and optional manual ISS/CBS/IBS rates.",
         },
       },
     },
