@@ -1,5 +1,7 @@
 # Suite Global + LATAM de APIs IA & x402 — 10 Microservicios Serverless (x402 v2 + MCP)
 
+[![brunopompeo1/brazil-ai-fiscal-apis-x402 MCP server](https://glama.ai/mcp/servers/brunopompeo1/brazil-ai-fiscal-apis-x402/badges/score.svg)](https://glama.ai/mcp/servers/brunopompeo1/brazil-ai-fiscal-apis-x402)
+
 
 > **Novedad v2.6.0 — Reforma Tributaria Oficial de Brasil (LC 214/2025, Base RFB V0073) sin servidor Java:** [`danfse.brunopompeo.com.br`](https://danfse.brunopompeo.com.br/tables) incorpora los 170 códigos oficiales `cClassTrib`, reducciones legales, Simples Nacional y transición 2026–2033; [`nfe.brunopompeo.com.br`](https://nfe.brunopompeo.com.br/sample) audita créditos CBS/IBS en BRL (lote `xmls[]`) con `supplierAlert` listo para enviar. Ver [`docs/RECEITA_4_AGENTES_REFORMA_TRIBUTARIA.md`](./docs/RECEITA_4_AGENTES_REFORMA_TRIBUTARIA.md) y [`examples/rtc-4-agents-workflow.mjs`](./examples/rtc-4-agents-workflow.mjs).
 

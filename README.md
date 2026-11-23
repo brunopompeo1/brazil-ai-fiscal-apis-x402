@@ -1,5 +1,7 @@
 # Global + LATAM AI & x402 API Suite — 10 APIs Serverless para Agentes de IA (x402 + MCP)
 
+[![brunopompeo1/brazil-ai-fiscal-apis-x402 MCP server](https://glama.ai/mcp/servers/brunopompeo1/brazil-ai-fiscal-apis-x402/badges/score.svg)](https://glama.ai/mcp/servers/brunopompeo1/brazil-ai-fiscal-apis-x402)
+
 > [English (README.en.md)](./README.en.md) | [Español (README.es.md)](./README.es.md) | [Gateway Unificado (api.brunopompeo.com.br)](https://api.brunopompeo.com.br) | [Guia B2B (PIX / API Key)](./docs/GUIA_EMPRESAS_B2B.md) | [Catálogo JSON](./catalog.json) | [llms.txt](./llms.txt)
 
 Conjunto de **10 APIs serverless em produção** na borda Cloudflare (**10–30 ms na América Latina**), projetadas para **agentes autônomos de IA, fintechs, escritórios de contabilidade, ERPs e automações (n8n / LangChain / Make)**.

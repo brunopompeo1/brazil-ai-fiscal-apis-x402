@@ -1,5 +1,7 @@
 # Global + LATAM AI & x402 API Suite — 10 Serverless Edge APIs (x402 v2 + MCP)
 
+[![brunopompeo1/brazil-ai-fiscal-apis-x402 MCP server](https://glama.ai/mcp/servers/brunopompeo1/brazil-ai-fiscal-apis-x402/badges/score.svg)](https://glama.ai/mcp/servers/brunopompeo1/brazil-ai-fiscal-apis-x402)
+
 
 > **New in v2.6.0 — Official Brazil Tax Reform (LC 214/2025, RFB Base V0073) without Java Server:** [`danfse.brunopompeo.com.br`](https://danfse.brunopompeo.com.br/tables) now embeds all 170 official Receita Federal `cClassTrib` legal reductions, Simples Nacional & 2026–2033 transition; [`nfe.brunopompeo.com.br`](https://nfe.brunopompeo.com.br/sample) audits CBS/IBS credits in BRL (single or batch `xmls[]`) with ready-to-send `supplierAlert`. See [`docs/RECEITA_4_AGENTES_REFORMA_TRIBUTARIA.md`](./docs/RECEITA_4_AGENTES_REFORMA_TRIBUTARIA.md) & [`examples/rtc-4-agents-workflow.mjs`](./examples/rtc-4-agents-workflow.mjs).
 
