@@ -12,7 +12,7 @@ import { SUITE_TOOLS } from "./tools.mjs";
 const SUITE_STATUS_TOOL = {
   name: "brazil_ai_suite_status",
   description:
-    "FREE: Lists all 10 Global + LATAM AI & x402 Suite microservices, live USDC prices on Base, endpoints, and current MCP client payment mode (x402 wallet, B2B API Key, or discovery-only).",
+    "FREE: Lists all 12 Global + LATAM AI & x402 Suite microservices (14 paid tools), live USDC prices on Base, endpoints, and current MCP client payment mode (x402 wallet, B2B API Key, or discovery-only).",
   inputSchema: {
     type: "object",
     properties: {},
@@ -84,7 +84,7 @@ export async function runMcpServer() {
   const paymentCtx = createPaymentClient();
 
   const server = new Server(
-    { name: "brazil-ai-x402-mcp", version: "2.6.0" },
+    { name: "brazil-ai-x402-mcp", version: "2.7.0" },
     { capabilities: { tools: {} } }
   );
 
@@ -112,7 +112,9 @@ export async function runMcpServer() {
             text: JSON.stringify(
               {
                 suite: "Global + LATAM AI & x402 Suite",
-                version: "2.6.0",
+                version: "2.7.0",
+                totalMicroservices: 12,
+                totalPaidTools: SUITE_TOOLS.length,
                 network: "eip155:8453 (Base Mainnet)",
                 currency: "USDC",
                 paymentMode: paymentCtx.mode,

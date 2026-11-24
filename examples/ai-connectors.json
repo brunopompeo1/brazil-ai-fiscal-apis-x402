@@ -2,7 +2,7 @@
   "mcpServers": {
     "latam-brazil-ai-x402": {
       "command": "npx",
-      "args": ["-y", "github:brunopompeo1/brazil-ai-fiscal-apis-x402"],
+      "args": ["-y", "@brunopompeo/brazil-ai-x402-mcp"],
       "env": {
         "X402_PRIVATE_KEY": "",
         "X402_MAX_USDC_PER_CALL": "0.05"
@@ -10,6 +10,8 @@
     }
   },
   "_individualRemoteMcpServers": {
+    "base-defi-shield": { "url": "https://defi.brunopompeo.com.br/mcp" },
+    "crypto-perp-pulse": { "url": "https://pulse.brunopompeo.com.br/mcp" },
     "agent-guard": { "url": "https://guard.brunopompeo.com.br/mcp" },
     "web-enrichment": { "url": "https://web.brunopompeo.com.br/mcp" },
     "agent-email": { "url": "https://email.brunopompeo.com.br/mcp" },

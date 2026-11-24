@@ -1,5 +1,97 @@
 export const SUITE_TOOLS = [
   {
+    name: "base_token_safety_check",
+    priceUsd: "0.015",
+    method: "POST",
+    endpoint: "https://defi.brunopompeo.com.br/check",
+    description:
+      "Pre-trade token safety check on Base/EVM: Honeypot.is V2 swap simulation, GoPlus honeypot & tax scan, DexScreener live liquidity, DefiLlama oracle price divergence (pass/warn/fail), safetyScore (0-100), and swapEligibility across 7 EVM chains ($0.015 USDC via x402 on Base).",
+    inputSchema: {
+      type: "object",
+      properties: {
+        address: {
+          type: "string",
+          description:
+            "0x token contract address or Base symbol (WETH, USDC, AERO, VIRTUAL, DEGEN, BRETT)",
+        },
+        chain: {
+          type: "string",
+          enum: ["base", "ethereum", "arbitrum", "optimism", "polygon", "bsc", "avalanche"],
+          description: "Chain name (default: base)",
+        },
+      },
+      required: ["address"],
+    },
+  },
+  {
+    name: "evm_wallet_risk_check",
+    priceUsd: "0.015",
+    method: "POST",
+    endpoint: "https://defi.brunopompeo.com.br/wallet",
+    description:
+      "Check any EVM wallet for phishing, sanctions, money laundering, or malicious contract flags via GoPlus plus live Base ETH & USDC balances and account type (EOA vs CONTRACT) via RPC ($0.015 USDC via x402 on Base).",
+    inputSchema: {
+      type: "object",
+      properties: {
+        address: {
+          type: "string",
+          description: "0x EVM wallet address",
+        },
+        chain: {
+          type: "string",
+          enum: ["base", "ethereum", "arbitrum", "optimism", "polygon"],
+          description: "Chain name (default: base)",
+        },
+      },
+      required: ["address"],
+    },
+  },
+  {
+    name: "hyperliquid_perp_funding_radar",
+    priceUsd: "0.015",
+    method: "POST",
+    endpoint: "https://pulse.brunopompeo.com.br/funding",
+    description:
+      "Fetch live Hyperliquid perpetual futures funding rates (1h, 8h, APR %), mark/oracle basis, open interest USD, and top long/short squeeze candidates across ~180 markets ($0.015 USDC via x402 on Base).",
+    inputSchema: {
+      type: "object",
+      properties: {
+        symbol: {
+          type: "string",
+          description: "Optional comma-separated ticker(s), e.g. BTC,ETH,SOL,HYPE",
+        },
+        symbols: {
+          type: "array",
+          items: { type: "string" },
+          description: "Optional array of ticker symbols, e.g. ['BTC','ETH','SOL','HYPE']",
+        },
+        top: {
+          type: "number",
+          description:
+            "Number of top OI markets to return when symbol/symbols is omitted (default: 15, max: 50)",
+        },
+      },
+    },
+  },
+  {
+    name: "ai_crypto_outage_radar",
+    priceUsd: "0.015",
+    method: "POST",
+    endpoint: "https://pulse.brunopompeo.com.br/infra",
+    description:
+      "Check live operational status & active incidents across 10 core AI & Crypto providers (OpenAI, Anthropic, Cloudflare, GitHub, Vercel, Supabase, Base, Coinbase, Solana, Alchemy) plus live Base Mainnet RPC block & latency ($0.015 USDC via x402 on Base).",
+    inputSchema: {
+      type: "object",
+      properties: {
+        category: {
+          type: "string",
+          enum: ["all", "ai", "cloud", "crypto"],
+          description: "Optional filter: all (default), ai, cloud, crypto",
+        },
+      },
+    },
+  },
+  {
     name: "agent_guard_sanitize",
     priceUsd: "0.008",
     method: "POST",

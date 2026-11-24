@@ -1,6 +1,6 @@
 {
   "suite": "Global + LATAM AI & x402 Enterprise Suite",
-  "version": "2.6.0",
+  "version": "2.7.0",
   "gateway": "https://api.brunopompeo.com.br",
   "network": "base",
   "chainId": "eip155:8453",
@@ -27,12 +27,52 @@
     "officialMcpRegistry": "https://registry.modelcontextprotocol.io"
   },
   "unifiedMcp": {
-    "package": "brazil-ai-x402-mcp",
+    "package": "@brunopompeo/brazil-ai-x402-mcp",
+    "npxNpm": "npx -y @brunopompeo/brazil-ai-x402-mcp",
     "npxGithub": "npx -y github:brunopompeo1/brazil-ai-fiscal-apis-x402",
-    "toolsCount": 11
+    "toolsCount": 15,
+    "paidToolsCount": 14
   },
-  "totalServices": 10,
+  "totalServices": 12,
   "services": [
+    {
+      "id": "base-defi-shield-x402",
+      "group": "global-agent-tools",
+      "category": "global-defi-security",
+      "name": "Base & EVM DeFi Pre-Trade Shield (Token Safety & Wallet Risk)",
+      "priceUsdc": "0.015",
+      "method": "POST",
+      "endpoint": "https://defi.brunopompeo.com.br/check",
+      "walletEndpoint": "https://defi.brunopompeo.com.br/wallet",
+      "gatewayEndpoint": "https://api.brunopompeo.com.br/check",
+      "gatewayWalletEndpoint": "https://api.brunopompeo.com.br/wallet",
+      "workersDevEndpoint": "https://base-defi-shield-x402.architect-x402.workers.dev/check",
+      "openApiUrl": "https://defi.brunopompeo.com.br/openapi.json",
+      "sampleUrl": "https://defi.brunopompeo.com.br/sample",
+      "mcpEndpoint": "https://defi.brunopompeo.com.br/mcp",
+      "catalogUrl": "https://defi.brunopompeo.com.br/.well-known/x402.json",
+      "llmsUrl": "https://defi.brunopompeo.com.br/llms.txt",
+      "summary": "Pre-trade token safety firewall on Base & 7 EVM chains (Honeypot.is V2 swap simulation + GoPlus honeypot/tax scan + DexScreener live liquidity + DefiLlama oracle divergence pass/warn/fail + safetyScore 0-100) and EVM wallet phishing/sanctions risk + live Base ETH/USDC balances (/wallet)."
+    },
+    {
+      "id": "crypto-perp-pulse-x402",
+      "group": "global-agent-tools",
+      "category": "global-crypto-infra",
+      "name": "Crypto Perp Pulse & AI/Crypto Infra Outage Radar",
+      "priceUsdc": "0.015",
+      "method": "POST",
+      "endpoint": "https://pulse.brunopompeo.com.br/funding",
+      "infraEndpoint": "https://pulse.brunopompeo.com.br/infra",
+      "gatewayEndpoint": "https://api.brunopompeo.com.br/funding",
+      "gatewayInfraEndpoint": "https://api.brunopompeo.com.br/infra",
+      "workersDevEndpoint": "https://crypto-perp-pulse-x402.architect-x402.workers.dev/funding",
+      "openApiUrl": "https://pulse.brunopompeo.com.br/openapi.json",
+      "sampleUrl": "https://pulse.brunopompeo.com.br/sample",
+      "mcpEndpoint": "https://pulse.brunopompeo.com.br/mcp",
+      "catalogUrl": "https://pulse.brunopompeo.com.br/.well-known/x402.json",
+      "llmsUrl": "https://pulse.brunopompeo.com.br/llms.txt",
+      "summary": "Live Hyperliquid perpetual funding rates (1h, 8h, APR %), mark/oracle basis, open interest USD, and long/short squeeze radar across ~180 markets (/funding) plus live outage & incident telemetry across 10 core AI/Crypto providers & Base RPC health (/infra)."
+    },
     {
       "id": "agent-guard-x402",
       "group": "global-agent-tools",
