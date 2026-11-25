@@ -8,16 +8,28 @@ import { createPublicClient, http } from "viem";
 import { privateKeyToAccount } from "viem/accounts";
 import { base } from "viem/chains";
 import { SUITE_TOOLS } from "./tools.mjs";
+import { STATUS_TOOL_METADATA, describeTool } from "./tool-metadata.mjs";
+
+const SUITE_VERSION = "2.7.1";
 
 const SUITE_STATUS_TOOL = {
   name: "brazil_ai_suite_status",
-  description:
-    "FREE: Lists all 12 Global + LATAM AI & x402 Suite microservices (14 paid tools), live USDC prices on Base, endpoints, and current MCP client payment mode (x402 wallet, B2B API Key, or discovery-only).",
+  title: STATUS_TOOL_METADATA.title,
+  description: STATUS_TOOL_METADATA.description,
   inputSchema: {
     type: "object",
     properties: {},
   },
+  outputSchema: STATUS_TOOL_METADATA.outputSchema,
+  annotations: STATUS_TOOL_METADATA.annotations,
 };
+
+// structuredContent must be a JSON object; arrays and plain text are wrapped.
+function toStructured(parsed) {
+  if (parsed && typeof parsed === "object" && !Array.isArray(parsed)) return parsed;
+  if (Array.isArray(parsed)) return { items: parsed };
+  return { text: String(parsed ?? "") };
+}
 
 function normalizePrivateKey(raw) {
   if (!raw || typeof raw !== "string") return null;
@@ -84,7 +96,7 @@ export async function runMcpServer() {
   const paymentCtx = createPaymentClient();
 
   const server = new Server(
-    { name: "brazil-ai-x402-mcp", version: "2.7.0" },
+    { name: "brazil-ai-x402-mcp", version: SUITE_VERSION },
     { capabilities: { tools: {} } }
   );
 
@@ -92,11 +104,7 @@ export async function runMcpServer() {
     return {
       tools: [
         SUITE_STATUS_TOOL,
-        ...SUITE_TOOLS.map((t) => ({
-          name: t.name,
-          description: t.description,
-          inputSchema: t.inputSchema,
-        })),
+        ...SUITE_TOOLS.map((t) => describeTool(t)),
       ],
     };
   });
@@ -105,14 +113,9 @@ export async function runMcpServer() {
     const { name, arguments: args = {} } = request.params;
 
     if (name === "brazil_ai_suite_status") {
-      return {
-        content: [
-          {
-            type: "text",
-            text: JSON.stringify(
-              {
+      const status = {
                 suite: "Global + LATAM AI & x402 Suite",
-                version: "2.7.0",
+                version: SUITE_VERSION,
                 totalMicroservices: 12,
                 totalPaidTools: SUITE_TOOLS.length,
                 network: "eip155:8453 (Base Mainnet)",
@@ -126,12 +129,10 @@ export async function runMcpServer() {
                   endpoint: t.endpoint,
                   priceUsdc: t.priceUsd,
                 })),
-              },
-              null,
-              2
-            ),
-          },
-        ],
+      };
+      return {
+        content: [{ type: "text", text: JSON.stringify(status, null, 2) }],
+        structuredContent: status,
       };
     }
 
@@ -252,16 +253,19 @@ export async function runMcpServer() {
         parsed = textBody;
       }
 
+      const payload =
+        typeof parsed === "string" ? parsed : settlement ? { ...parsed, _x402Settlement: settlement } : parsed;
+      const structured = toStructured(payload);
+      if (settlement && typeof parsed === "string") structured._x402Settlement = settlement;
+
       return {
         content: [
           {
             type: "text",
-            text:
-              typeof parsed === "string"
-                ? parsed
-                : JSON.stringify(settlement ? { ...parsed, _x402Settlement: settlement } : parsed, null, 2),
+            text: typeof payload === "string" ? payload : JSON.stringify(payload, null, 2),
           },
         ],
+        structuredContent: structured,
       };
     } catch (err) {
       return {

@@ -1,6 +1,6 @@
 {
   "suite": "Global + LATAM AI & x402 Enterprise Suite",
-  "version": "2.7.0",
+  "version": "2.7.1",
   "gateway": "https://api.brunopompeo.com.br",
   "network": "base",
   "chainId": "eip155:8453",

@@ -1,6 +1,6 @@
 {
   "name": "@brunopompeo/brazil-ai-x402-mcp",
-  "version": "2.7.0",
+  "version": "2.7.1",
   "description": "Unified MCP Server for Global + LATAM AI & x402 Suite (12 Edge APIs, 14 paid tools: Base/EVM DeFi Pre-Trade Shield & Wallet Risk, Hyperliquid Perp Funding & AI/Crypto Outage Radar, Official Brazil Receita Federal RTC Calculator Base V0073 without Java server, NF-e CBS/IBS Tax Credit Auditor, LATAM Tax/Bank & FX for 7 countries, Prompt Guard, Web Enrichment, Agent Email, Boleto/DARF, Payroll, CNPJ/PIX, BCB IPCA/PTAX) with native x402 v2 Base USDC micropayments.",
   "type": "module",
   "main": "src/index.mjs",

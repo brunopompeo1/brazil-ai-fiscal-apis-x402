@@ -5,7 +5,7 @@ import { fileURLToPath } from 'node:url';
 
 const env = { ...process.env };
 for (const key of ['X402_PRIVATE_KEY', 'EVM_PRIVATE_KEY', 'BRAZIL_AI_API_KEY']) delete env[key];
-const client = new Client({ name: 'smoke', version: '2.7.0' });
+const client = new Client({ name: 'smoke', version: '2.7.1' });
 try {
   await client.connect(new StdioClientTransport({ command: process.execPath, args: [fileURLToPath(new URL('../bin/cli.mjs', import.meta.url))], env }));
   const tools = await client.listTools();
@@ -32,10 +32,21 @@ try {
     assert.ok(tools.tools.some((t) => t.name === name), `Missing tool: ${name}`);
   }
 
+  // MCP metadata (title, annotations, outputSchema) on every tool
+  for (const t of tools.tools) {
+    assert.ok(t.title, `Missing title: ${t.name}`);
+    assert.ok(t.annotations && typeof t.annotations.readOnlyHint === 'boolean', `Missing annotations: ${t.name}`);
+    assert.equal(t.outputSchema?.type, 'object', `Missing outputSchema: ${t.name}`);
+  }
+  const email = tools.tools.find((t) => t.name === 'agent_send_email');
+  assert.equal(email.annotations.readOnlyHint, false, 'agent_send_email must not be read-only');
+  assert.equal(email.annotations.idempotentHint, false, 'agent_send_email must not be idempotent');
+
   const result = await client.callTool({ name: 'brazil_ai_suite_status', arguments: {} });
   const status = JSON.parse(result.content[0].text);
+  assert.deepEqual(result.structuredContent, status, 'status structuredContent must mirror the text payload');
   assert.equal(status.paymentMode, 'discovery_only');
-  assert.equal(status.version, '2.7.0');
+  assert.equal(status.version, '2.7.1');
   assert.equal(status.totalMicroservices, 12);
   assert.equal(status.services.length, 14);
 
@@ -59,5 +70,5 @@ try {
     assert.equal(svc.priceUsdc, expectedPrices[svc.tool], `Price mismatch for ${svc.tool}`);
   }
 
-  console.log('OK: initialization, fifteen tools (14 paid across 12 APIs + 1 free status), v2.7.0, preserved pricing, and explicit discovery-only status without credentials.');
+  console.log('OK: initialization, fifteen tools (14 paid across 12 APIs + 1 free status), v2.7.1, MCP metadata (title/annotations/outputSchema/structuredContent), preserved pricing, and explicit discovery-only status without credentials.');
 } finally { await client.close(); }
