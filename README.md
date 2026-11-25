@@ -2,6 +2,8 @@
 
 [![brunopompeo1/brazil-ai-fiscal-apis-x402 MCP server](https://glama.ai/mcp/servers/brunopompeo1/brazil-ai-fiscal-apis-x402/badges/score.svg)](https://glama.ai/mcp/servers/brunopompeo1/brazil-ai-fiscal-apis-x402)
 
+> **v2.7.1 — Metadados MCP para agentes:** todos os servidores `/mcp` negociam o protocolo 2024-11-05, 2025-03-26 ou 2025-06-18 e listam ferramentas com `title`, `annotations` e `outputSchema`; nome de ferramenta inválido devolve erro JSON-RPC -32602 em vez de cair numa rota paga. Preços, rotas e contrato x402 v2 inalterados.
+>
 > **Novidade v2.7.0 — 2 Novas APIs Globais de DeFi & Infra (`$0.015 USDC`):** [`defi.brunopompeo.com.br`](https://defi.brunopompeo.com.br/sample) (simulação real Honeypot.is V2 + GoPlus + liquidez DexScreener + divergência de oráculo DefiLlama em 7 redes EVM + risco/saldos de carteiras `/wallet`) e [`pulse.brunopompeo.com.br`](https://pulse.brunopompeo.com.br/sample) (funding ao vivo em ~180 mercados perpétuos Hyperliquid + radar de squeeze `/funding` + radar de instabilidade de 10 provedores críticos de IA/Cripto & RPC Base `/infra`). Preços das 10 APIs originais 100% preservados.
 
 > [English (README.en.md)](./README.en.md) | [Español (README.es.md)](./README.es.md) | [Gateway Unificado (api.brunopompeo.com.br)](https://api.brunopompeo.com.br) | [Guia B2B (PIX / API Key)](./docs/GUIA_EMPRESAS_B2B.md) | [Catálogo JSON](./catalog.json) | [llms.txt](./llms.txt)

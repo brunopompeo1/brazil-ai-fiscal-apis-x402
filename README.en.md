@@ -3,6 +3,8 @@
 [![brunopompeo1/brazil-ai-fiscal-apis-x402 MCP server](https://glama.ai/mcp/servers/brunopompeo1/brazil-ai-fiscal-apis-x402/badges/score.svg)](https://glama.ai/mcp/servers/brunopompeo1/brazil-ai-fiscal-apis-x402)
 
 
+> **v2.7.1 — MCP metadata for agents:** every `/mcp` server negotiates protocol 2024-11-05, 2025-03-26 or 2025-06-18 and lists tools with `title`, `annotations` and `outputSchema`; an unknown tool name returns JSON-RPC error -32602 instead of reaching a paid route. Prices, routes and the x402 v2 contract are unchanged.
+>
 > **New in v2.7.0 — 2 Global DeFi & Infra APIs (`$0.015 USDC`):** [`defi.brunopompeo.com.br`](https://defi.brunopompeo.com.br/sample) (Honeypot.is V2 swap simulation + GoPlus + DexScreener liquidity + DefiLlama oracle divergence across 7 EVM chains + EVM wallet phishing/sanctions risk & live Base ETH/USDC balances `/wallet`) and [`pulse.brunopompeo.com.br`](https://pulse.brunopompeo.com.br/sample) (live Hyperliquid perp funding across ~180 markets + squeeze radar `/funding` + live outage telemetry for 10 core AI/Crypto providers & Base RPC `/infra`). All 10 original API prices remain unchanged.
 >
 > **Also included (v2.6.0) — Official Brazil Tax Reform (LC 214/2025, RFB Base V0073) without Java Server:** [`danfse.brunopompeo.com.br`](https://danfse.brunopompeo.com.br/tables) embeds all 170 official Receita Federal `cClassTrib` legal reductions, Simples Nacional & 2026–2033 transition; [`nfe.brunopompeo.com.br`](https://nfe.brunopompeo.com.br/sample) audits CBS/IBS credits in BRL (single or batch `xmls[]`) with ready-to-send `supplierAlert`. See [`docs/RECEITA_4_AGENTES_REFORMA_TRIBUTARIA.md`](./docs/RECEITA_4_AGENTES_REFORMA_TRIBUTARIA.md) & [`examples/rtc-4-agents-workflow.mjs`](./examples/rtc-4-agents-workflow.mjs).

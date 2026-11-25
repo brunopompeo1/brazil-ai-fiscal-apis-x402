@@ -1,4 +1,6 @@
-# Global + LATAM AI & x402 API Suite (v2.7.0 — 12 Serverless Edge APIs)
+# Global + LATAM AI & x402 API Suite (v2.7.1 — 12 Serverless Edge APIs)
+
+> v2.7.1: every MCP server (`/mcp` on each host) now negotiates protocol 2024-11-05, 2025-03-26 or 2025-06-18 and lists intent-named tools with `title`, `annotations` (readOnly/destructive/idempotent/openWorld hints) and `outputSchema`; an unknown tool name returns JSON-RPC -32602 with the list of valid tools instead of reaching a paid route. Prices, routes and the x402 v2 contract are unchanged.
 
 > EN: 12 ultra-fast Cloudflare Edge microservices (10-30 ms in Latin America) for autonomous AI agents, DeFi/crypto trading bots, fintechs, ERPs, n8n/LangChain workflows, and accounting automation. Pay per call in USDC on Base (`eip155:8453`) via x402 v2 — zero signup, zero API keys required (or optional B2B API Key).
 > ES: 12 microservicios serverless en Cloudflare Edge para agentes de IA, bots DeFi/cripto y fintechs en México, Argentina, Chile, Colombia, Perú, Uruguay y Brasil. Pago por llamada en USDC (Base) vía protocolo x402 v2, sin registro previo.
