@@ -5,7 +5,7 @@ import { fileURLToPath } from 'node:url';
 
 const env = { ...process.env };
 for (const key of ['X402_PRIVATE_KEY', 'EVM_PRIVATE_KEY', 'BRAZIL_AI_API_KEY']) delete env[key];
-const client = new Client({ name: 'smoke', version: '2.7.1' });
+const client = new Client({ name: 'smoke', version: '2.7.2' });
 try {
   await client.connect(new StdioClientTransport({ command: process.execPath, args: [fileURLToPath(new URL('../bin/cli.mjs', import.meta.url))], env }));
   const tools = await client.listTools();
@@ -46,7 +46,7 @@ try {
   const status = JSON.parse(result.content[0].text);
   assert.deepEqual(result.structuredContent, status, 'status structuredContent must mirror the text payload');
   assert.equal(status.paymentMode, 'discovery_only');
-  assert.equal(status.version, '2.7.1');
+  assert.equal(status.version, '2.7.2');
   assert.equal(status.totalMicroservices, 12);
   assert.equal(status.services.length, 14);
 
@@ -70,5 +70,5 @@ try {
     assert.equal(svc.priceUsdc, expectedPrices[svc.tool], `Price mismatch for ${svc.tool}`);
   }
 
-  console.log('OK: initialization, fifteen tools (14 paid across 12 APIs + 1 free status), v2.7.1, MCP metadata (title/annotations/outputSchema/structuredContent), preserved pricing, and explicit discovery-only status without credentials.');
+  console.log('OK: initialization, fifteen tools (14 paid across 12 APIs + 1 free status), v2.7.2, MCP metadata (title/annotations/outputSchema/structuredContent), preserved pricing, and explicit discovery-only status without credentials.');
 } finally { await client.close(); }

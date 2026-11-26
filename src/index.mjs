@@ -10,7 +10,7 @@ import { base } from "viem/chains";
 import { SUITE_TOOLS } from "./tools.mjs";
 import { STATUS_TOOL_METADATA, describeTool } from "./tool-metadata.mjs";
 
-const SUITE_VERSION = "2.7.1";
+const SUITE_VERSION = "2.7.2";
 
 const SUITE_STATUS_TOOL = {
   name: "brazil_ai_suite_status",
