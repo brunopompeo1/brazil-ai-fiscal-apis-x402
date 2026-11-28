@@ -14,6 +14,11 @@ Conjunto de **12 APIs serverless em produção** na borda Cloudflare (**10–30 
 - **Liquidação nativa x402 v2 na rede Base (USDC):** Zero cadastro, zero assinatura mensal — compatível com **Coinbase CDP Facilitator** (e fallback automático PayAI), listada em **x402-list.com**, **402 Index**, **PayAPI Market**, **x402scan.com**, **Wafermap**, **Glama Connectors** e **Official MCP Registry**.
 - **Servidor MCP Unificado em 1 comando:** Conecte todas as **14 ferramentas pagas + 1 gratuita** no Claude Desktop, Cursor, VS Code ou Windsurf via `npx -y @brunopompeo/brazil-ai-x402-mcp` (ou `npx -y github:brunopompeo1/brazil-ai-fiscal-apis-x402`).
 - **Amostra gratuita em cada API:** Chame `GET /sample` em qualquer serviço para inspecionar o payload real sem custo antes de pagar.
+- **Teste grátis real sem cadastro (`X-Free-Trial: 1`):** 3 chamadas completas/dia por IP em 11/12 APIs (desativado apenas no `agent-email`) via header `X-Free-Trial: 1` ou argumento MCP `"free_trial": true`.
+- **Sem carteira cripto? Cartão, Pix, Planos B2B, RapidAPI e Apify:**
+  - Créditos pré-pagos a partir de US$1 (Cartão, Pix em R$ ou USDC): [`credits.brunopompeo.com.br`](https://credits.brunopompeo.com.br)
+  - Planos mensais em reais (7 dias grátis) para software houses e ERPs (Reforma Tributária CBS/IBS + suíte completa): [`credits.brunopompeo.com.br/empresas`](https://credits.brunopompeo.com.br/empresas)
+  - Assinaturas em USD na [RapidAPI](https://rapidapi.com/brunopompeo1/api/web-to-markdown-for-llm) (4 APIs) e Actors pay-per-event na [Apify Store](https://apify.com/brunopompeo) (3 Actors).
 
 ---
 

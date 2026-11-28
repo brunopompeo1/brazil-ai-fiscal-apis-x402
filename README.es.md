@@ -17,6 +17,8 @@ Colección en producción de **12 APIs serverless en el borde de Cloudflare** (*
 - **Hub Unificado + 12 Subdominios Dedicados:** Consume todo desde [`https://api.brunopompeo.com.br`](https://api.brunopompeo.com.br) o directamente en cada subdominio (`*.brunopompeo.com.br`).
 - **Servidor MCP Unificado en 1 comando:** Conecta las **14 herramientas pagas + 1 gratuita** en Claude Desktop, Cursor, VS Code o Windsurf con `npx -y @brunopompeo/brazil-ai-x402-mcp` (o `npx -y github:brunopompeo1/brazil-ai-fiscal-apis-x402`).
 - **Muestra gratuita (`GET /sample`) en cada API:** Prueba la estructura exacta de entrada/salida sin costo antes de pagar.
+- **Prueba gratis real sin registro (`X-Free-Trial: 1`):** 3 llamadas completas/día por IP en 11/12 APIs (desactivado en `agent-email`) enviando el encabezado `X-Free-Trial: 1` o el argumento MCP `"free_trial": true`.
+- **¿Sin wallet cripto? Tarjeta, Pix, RapidAPI y Apify:** Llaves prepagas desde US$1 en [`credits.brunopompeo.com.br`](https://credits.brunopompeo.com.br), planes B2B en Brasil en [`/empresas`](https://credits.brunopompeo.com.br/empresas), suscripciones en [RapidAPI](https://rapidapi.com/brunopompeo1/api/web-to-markdown-for-llm) y Actors en [Apify Store](https://apify.com/brunopompeo).
 
 ---
 

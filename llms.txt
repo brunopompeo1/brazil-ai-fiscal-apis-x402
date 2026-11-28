@@ -10,6 +10,10 @@
 - Unified API Hub: https://api.brunopompeo.com.br (`GET /llms.txt`, `GET /openapi.json`, `GET /catalog.json`, `GET /health`)
 - Unified MCP Server (npm or GitHub, 1 command): `npx -y @brunopompeo/brazil-ai-x402-mcp` or `npx -y github:brunopompeo1/brazil-ai-fiscal-apis-x402` (14 paid tools across 12 APIs + 1 free status tool)
 - Settlement Wallet (`payTo`): `0x20990fB239296a0A2d923C200Cb1C21187e2dA23` (USDC on Base `eip155:8453`)
+- Live Free Trial (no signup/wallet): send header `X-Free-Trial: 1` (or MCP argument `"free_trial": true`) for 3 full results/day per IP on 11/12 APIs (disabled on `agent-email`)
+- Prepaid API Keys (no crypto wallet needed — Stripe Card, Brazil Pix BRL, or Base USDC): https://credits.brunopompeo.com.br (`/card?pack=1|5|10`, `/pix?pack=1|5|10`, `/buy?pack=1|5|10`)
+- Monthly B2B Plans in BRL (7-day free trial, Brazil Tax Reform CBS/IBS + full 12-API suite): https://credits.brunopompeo.com.br/empresas
+- Marketplaces: RapidAPI (4 APIs: https://rapidapi.com/brunopompeo1/api/web-to-markdown-for-llm) & Apify Store (3 Actors: https://apify.com/brunopompeo)
 
 ## Global High-Volume Agent & DeFi Tools (5)
 1. **Base & EVM DeFi Pre-Trade Shield (NEW v2.7)** — `POST/GET https://defi.brunopompeo.com.br/check` & `/wallet` ($0.015 USDC) | Multi-oracle token safety across 7 EVM chains (Honeypot.is V2 swap simulation + GoPlus + DexScreener live liquidity + DefiLlama oracle divergence `pass`/`warn`/`fail` + `safetyScore` 0–100 + `swapEligibility`) and EVM wallet phishing/sanctions audit + live Base ETH/USDC balances (`/wallet`) | `/sample` `/openapi.json` `/mcp`

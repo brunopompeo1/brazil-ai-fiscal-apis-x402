@@ -18,6 +18,11 @@ A production suite of **12 ultra-fast Cloudflare Edge APIs** (**10–30 ms laten
 - **Unified Gateway + 12 Dedicated Custom Domains:** Call everything via [`https://api.brunopompeo.com.br`](https://api.brunopompeo.com.br) or directly on each service subdomain (`*.brunopompeo.com.br`).
 - **Zero signup, zero subscriptions:** Native **x402 v2** (`HTTP 402 Payment Required` in USDC on Base `eip155:8453`) via **Coinbase CDP Facilitator** (with PayAI fallback). Free **`GET /sample`** on every API.
 - **One-command Unified MCP Server:** Connect all **14 paid tools + 1 free status tool** in Claude Desktop, Cursor, VS Code, or Windsurf via `npx -y @brunopompeo/brazil-ai-x402-mcp` (or `npx -y github:brunopompeo1/brazil-ai-fiscal-apis-x402`).
+- **Live Free Trial (no signup/wallet):** Send header `X-Free-Trial: 1` (or MCP argument `"free_trial": true`) for 3 full live results/day per IP on 11/12 APIs (disabled on `agent-email`).
+- **No crypto wallet? Card, Pix, B2B Plans, RapidAPI & Apify:**
+  - Prepaid API keys from US$1 (Stripe Card, Brazil Pix BRL, or Base USDC): [`credits.brunopompeo.com.br`](https://credits.brunopompeo.com.br)
+  - Monthly B2B BRL plans (7-day free trial for Brazil ERPs & Tax Reform CBS/IBS): [`credits.brunopompeo.com.br/empresas`](https://credits.brunopompeo.com.br/empresas)
+  - USD subscriptions on [RapidAPI](https://rapidapi.com/brunopompeo1/api/web-to-markdown-for-llm) (4 APIs) & pay-per-event Actors on [Apify Store](https://apify.com/brunopompeo) (3 Actors).
 
 ---
 
