@@ -1,6 +1,6 @@
 # Global + LATAM AI & x402 API Suite — 12 APIs Serverless para Agentes de IA (x402 + MCP)
 
-[![brunopompeo1/brazil-ai-fiscal-apis-x402 MCP server](https://glama.ai/mcp/servers/brunopompeo1/brazil-ai-fiscal-apis-x402/badges/score.svg)](https://glama.ai/mcp/servers/brunopompeo1/brazil-ai-fiscal-apis-x402)
+[![brunopompeo1/brazil-ai-fiscal-apis-x402 MCP server](https://glama.ai/mcp/servers/brunopompeo1/brazil-ai-fiscal-apis-x402/badges/score.svg)](https://glama.ai/mcp/servers/brunopompeo1/brazil-ai-fiscal-apis-x402) [![M8ven Score](https://m8ven.ai/badge/mcp/brunopompeo1-brazil-ai-fiscal-apis-x402-d3qc12?v=4f123adbca91a34da5bbfc1d8d5f70e2)](https://m8ven.ai/mcp/brunopompeo1-brazil-ai-fiscal-apis-x402-d3qc12?s=readme)
 
 > **v2.7.1 — Metadados MCP para agentes:** todos os servidores `/mcp` negociam o protocolo 2024-11-05, 2025-03-26 ou 2025-06-18 e listam ferramentas com `title`, `annotations` e `outputSchema`; nome de ferramenta inválido devolve erro JSON-RPC -32602 em vez de cair numa rota paga. Preços, rotas e contrato x402 v2 inalterados.
 >
